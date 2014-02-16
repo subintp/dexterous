@@ -17,4 +17,11 @@ describe Track do
   it "is creatable by any user" do
     expect(Track.creatable_by? build(:user)).to be true
   end
+
+  describe "creator" do
+    it "is added as contributor after track is saved" do
+      track = create(:track)
+      expect(track.contributors.first.user_id).to eq track.creator.id
+    end
+  end
 end
