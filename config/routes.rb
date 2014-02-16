@@ -1,4 +1,6 @@
 Dexterous::Application.routes.draw do
+  resources :milestones
+
   resources :tracks
 
   devise_for :users
