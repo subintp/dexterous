@@ -4,15 +4,15 @@ class TrackAuthorizer < Authority::Authorizer
   end
 
   def viewable_by?(user)
-    Contributor.where(target: resource, user: user, can_view: true).length > 0
+    resource.contributors.where(user: user, can_view: true).length > 0
   end
 
   def editable_by?(user)
-    Contributor.where(target: resource, user: user, can_edit: true).length > 0
+    resource.contributors.where(user: user, can_edit: true).length > 0
   end
 
   def deletable_by?(user)
-    Contributor.where(target: resource, user: user, is_admin: true).length > 0
+    resource.contributors.where(user: user, is_admin: true).length > 0
   end
 
   def sharable_by?(user, config)
@@ -25,7 +25,7 @@ class TrackAuthorizer < Authority::Authorizer
                         elsif permissions[:can_view]
                           :can_view
                         end
-      Contributor.where(target: resource, user: user, reqd_permission => true).length > 0
+      resource.contributors.where(user: user, reqd_permission => true).length > 0
     end
   end
 end
