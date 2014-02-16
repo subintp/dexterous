@@ -10,4 +10,10 @@ describe Contributor do
     expect(track.can_read).to be true
   end
 
+  it "can_edit and can_read if (s)he is_admin" do
+    track = create :track_contributor, is_admin: true
+    expect(track.can_read).to be true
+    expect(track.can_edit).to be true
+  end
+
 end
