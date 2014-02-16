@@ -9,7 +9,7 @@ class Contributor < ActiveRecord::Base
 
   def backfill_lower_permissions
     self.can_edit ||= is_admin
-    self.can_read ||= can_edit
+    self.can_view ||= can_edit
   end
 
 end
