@@ -6,7 +6,7 @@ class CreateContributors < ActiveRecord::Migration
       t.integer :user_id
       t.integer :associator_id
 
-      t.boolean :can_read
+      t.boolean :can_view
       t.boolean :can_edit
       t.boolean :is_admin
 
