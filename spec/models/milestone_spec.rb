@@ -9,4 +9,6 @@ describe Milestone do
     end
   end
 
+  it { is_expected.to belong_to(:creator).class_name('User') }
+  it { is_expected.to belong_to :track }
 end
