@@ -2,7 +2,8 @@ class Contributor < ActiveRecord::Base
 
   belongs_to :target, polymorphic: true
   belongs_to :user
-  belongs_to :associator, class_name: 'User'
+  belongs_to :requester, class_name: 'User'
+  belongs_to :approver, class_name: 'User'
   before_save :backfill_lower_permissions
 
   private

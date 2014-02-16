@@ -4,7 +4,9 @@ class CreateContributors < ActiveRecord::Migration
       t.integer :target_id
       t.integer :target_type
       t.integer :user_id
-      t.integer :associator_id
+      t.integer :requester_id
+      t.integer :approver_id
+      t.boolean :approved
 
       t.boolean :can_view
       t.boolean :can_edit
