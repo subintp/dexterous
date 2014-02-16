@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216175938) do
+ActiveRecord::Schema.define(version: 20140216205022) do
 
   create_table "contributors", force: true do |t|
     t.integer  "target_id"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20140216175938) do
     t.boolean  "can_view"
     t.boolean  "can_edit"
     t.boolean  "is_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "milestones", force: true do |t|
+    t.integer  "creator_id"
+    t.integer  "track_id"
+    t.string   "title"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
