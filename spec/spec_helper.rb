@@ -44,4 +44,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include FactoryGirl::Syntax::Methods
+  config.before :suite do
+    FactoryGirl.lint
+  end
 end
