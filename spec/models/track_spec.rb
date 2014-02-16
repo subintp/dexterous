@@ -13,6 +13,7 @@ describe Track do
   end
 
   it { is_expected.to belong_to(:creator).class_name('User') }
+  it { is_expected.to have_many(:contributors) }
 
   it "is creatable by any user" do
     expect(Track.creatable_by? build(:user)).to be true
