@@ -14,4 +14,7 @@ describe Track do
 
   it { is_expected.to belong_to :creator }
 
+  it "is creatable by any user" do
+    expect(Track.creatable_by? build(:user)).to be true
+  end
 end
