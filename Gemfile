@@ -22,7 +22,9 @@ gem 'react-rails'
 group :development , :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  %w[ core expectations mocks rails support ].each do |name|
+    gem "rspec-#{name}", github: "rspec/rspec-#{name}", branch: 'master'
+  end
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'debugger'
