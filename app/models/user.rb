@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   include Authority::UserAbilities
+
+  has_many :contributors
+  has_many :tracks, through: :contributors, as: :target
+  has_many :created_tracks, inverse_of: :creator, class_name: 'Track'
+
 end
