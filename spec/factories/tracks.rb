@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :track do
+    title "Rails 4.0 (prime stack)"
+    description "Learn how to develop cutting edge rails applications following TDD approach"
   end
 end
