@@ -1,0 +1,2 @@
+class LearningResourcesController < ApplicationController
+end

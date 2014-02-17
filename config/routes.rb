@@ -1,4 +1,6 @@
 Dexterous::Application.routes.draw do
+  resources :learning_resources
+
   resources :milestones
 
   resources :tracks
