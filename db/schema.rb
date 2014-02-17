@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217164902) do
+ActiveRecord::Schema.define(version: 20140217170627) do
 
   create_table "achievements", force: true do |t|
     t.integer  "user_id"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140217164902) do
     t.boolean  "can_view"
     t.boolean  "can_edit"
     t.boolean  "is_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "learning_resources", force: true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.integer  "milestone_id"
+    t.integer  "track_id"
+    t.text     "description"
+    t.text     "metadata"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
