@@ -5,7 +5,7 @@ class CreateMilestones < ActiveRecord::Migration
       t.integer :track_id
       t.string :title
       t.text :description
-      t.date :deadline
+      t.integer :expected_duration
       t.integer :score
       t.timestamps
     end
