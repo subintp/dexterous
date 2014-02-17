@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Milestone do
   describe "attributes" do
     it "include title, description created_at update_at" do
-      %w{title description created_at updated_at}.each do |field|
-        expect(Track.attribute_names).to include field
+      %w{title description created_at updated_at deadline score}.each do |field|
+        expect(Milestone.attribute_names).to include field
       end
     end
   end

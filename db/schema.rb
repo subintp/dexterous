@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140216205022) do
     t.integer  "track_id"
     t.string   "title"
     t.text     "description"
+    t.date     "deadline"
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
