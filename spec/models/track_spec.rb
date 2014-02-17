@@ -7,6 +7,7 @@ describe Track do
     it "include title, description created_at update_at" do
       %w{title description created_at updated_at}.each do |field|
         expect(Track.attribute_names).to include field
+        expect(Track.column_names).to include field
       end
     end
 

@@ -5,6 +5,7 @@ describe Milestone do
     it "include title, description created_at update_at" do
       %w{title description created_at updated_at expected_duration score}.each do |field|
         expect(Milestone.attribute_names).to include field
+        expect(Milestone.column_names).to include field
       end
     end
   end
