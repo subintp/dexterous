@@ -8,12 +8,13 @@ class User < ActiveRecord::Base
   include Authority::UserAbilities
 
   has_many :permissions
+  has_many :tracks, through: :permissions
 
   {
-    view: :viewable,
-    edit: :editable,
+    view:       :viewable,
+    edit:       :editable,
     contribute: :contributable,
-    manage: :manageable
+    manage:     :manageable
   }.each do |verb, adjective|
 
     has_many :"#{verb}_permissions", {
@@ -28,8 +29,8 @@ class User < ActiveRecord::Base
 
   %w{Track Milestone LearningResource}.each do |resource|
 
-    has_many :"created_#{resource.underscore.pluralize}",
-      inverse_of: :creator,
+    has_many :"owned_#{resource.underscore.pluralize}",
+      inverse_of: :owner,
       class_name: resource
 
   end
