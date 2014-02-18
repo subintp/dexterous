@@ -5,7 +5,7 @@ class TrackAuthorizer < Authority::Authorizer
   end
 
   def viewable_by?(user)
-    case resource.track.visibility
+    case resource.visibility
     when 'open'
       true
     when 'public'

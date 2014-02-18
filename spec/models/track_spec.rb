@@ -21,9 +21,12 @@ describe Track do
 
   context "with public visibility" do
 
+    before :each do
+      @track = build :track, visibility: 'public'
+    end
 
     it "can be viewed by any user" do
-
+      expect(build(:user).can_view? @track).to be true
     end
 
   end

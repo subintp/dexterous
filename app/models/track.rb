@@ -2,6 +2,7 @@ class Track < ActiveRecord::Base
   include Authority::Abilities
 
   belongs_to :owner, class_name: 'User'
+  has_many :permissions
 
   # visibility:
   # ----------
