@@ -5,5 +5,7 @@ FactoryGirl.define do
     title "Rails 4.0 (prime stack)"
     description "Learn how to develop cutting edge rails applications following TDD approach"
     owner factory: :user
+    visibility 'open'
+    contributability 'open'
   end
 end

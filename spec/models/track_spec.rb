@@ -46,6 +46,17 @@ describe Track do
     it "can not be viewed by guests" do
       expect(@track.viewable_by? nil).to be false
     end
+
+    context "with blacklisted users" do
+      it "can not be viewed by blacklisted users" do
+        user = create :user
+        track = create :track, visibility: 'public'
+        Permission.create! track: track, user: user, can_view: false
+        expect(track.viewable_by? user).to be false
+        expect(user.can_view? track).to be false
+      end
+
+    end
   end
 
 end
