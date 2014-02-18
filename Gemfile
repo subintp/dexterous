@@ -23,8 +23,11 @@ group :development , :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   %w[ core expectations mocks rails support ].each do |name|
-    gem "rspec-#{name}", github: "rspec/rspec-#{name}", branch: 'master'
+    gem "rspec-#{name}",
+      github: "rspec/rspec-#{name}",
+      branch: 'master'
   end
+  gem 'guard-rspec', require: false
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'debugger'
@@ -32,6 +35,4 @@ end
 
 group :development do
   gem 'guard-livereload', require: false
-  gem 'guard-rspec', require: false
-  gem 'rack-livereload'
 end
