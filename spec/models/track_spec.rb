@@ -98,9 +98,60 @@ describe Track do
     end
   end
 
-  context "with restricted contributability" do
+  %w{restricted permissive}.each do |p|
+    context "with #{p} contributability" do
+      before :each do
+        @track = build :track, contributability: p
+      end
+
+      it "doesn't accept contribution from arbitrary signed in user" do
+        expect(build(:user).can_contribute? @track).to be false
+      end
+
+      it "doesn't accept contribution from guests" do
+        expect(@track.contributable_by? nil).to be false
+      end
+
+      it "doesn't accept contribution from blacklisted users" do
+        @track.save!
+        user = create(:user)
+        Permission.create user: user, track: @track, can_contribute: false
+        expect(@track.contributable_by? user).to be false
+      end
+
+      it "accepts contributions from whitelisted users" do
+        @track.save!
+        user = create(:user)
+        Permission.create user: user, track: @track, can_contribute: true
+        expect(@track.contributable_by? user).to be true
+      end
+    end
+  end
+
+  context "with permissive contributability" do
     before :each do
-      @track = build :track, contributability: 'restricted'
+      @track = build :track, contributability: 'permissive'
+    end
+
+    it "allows suggestions from signed in users" do
+      expect(build(:user).can_suggest_contribution? @track).to be true
+    end
+
+    it "doesn't allow suggestions from guests" do
+      expect(@track.suggestively_contributable_by? nil).to be false
+    end
+
+    it "doesn't allow suggestions from blacklisted users" do
+        @track.save!
+        user = create(:user)
+        Permission.create user: user, track: @track, can_contribute: false
+        expect(@track.suggestively_contributable_by? user).to be false
+    end
+  end
+
+  context "with forbidden contributability" do
+    before :each do
+      @track = build :track, contributability: 'forbidden'
     end
 
     it "doesn't accept contribution from arbitrary signed in user" do
@@ -110,25 +161,5 @@ describe Track do
     it "doesn't accept contribution from guests" do
       expect(@track.contributable_by? nil).to be false
     end
-
-    it "doesn't accept contribution from blacklisted users" do
-      @track.save!
-      user = create(:user)
-      Permission.create user: user, track: @track, can_contribute: false
-      expect(@track.contributable_by? user).to be false
-    end
-
-    it "accepts contributions from whitelisted users" do
-      @track.save!
-      user = create(:user)
-      Permission.create user: user, track: @track, can_contribute: true
-      expect(@track.contributable_by? user).to be true
-    end
-  end
-
-  context "with permissive contributability" do
-  end
-
-  context "with forbidden contributability" do
   end
 end
