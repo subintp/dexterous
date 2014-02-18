@@ -17,7 +17,7 @@ class Track < ActiveRecord::Base
 
   # contributability:
   # ----------------
-  #   open       => Any signed in user, with the exception of blacklisted users,
+  #   public     => Any signed in user, with the exception of blacklisted users,
   #                 can make contribution
   #   permissive => Any signed in user, with the exception of blacklisted users
   #                 can suggest contribution, which will need to be moderated by
@@ -25,6 +25,6 @@ class Track < ActiveRecord::Base
   #   restricted => Explicitly whitelisted set of contributors can contribute
   #   forbidden  => Only owner can contribute
   validates :contributability, inclusion: {
-    in: %w{open permissive restricted forbidden }
+    in: %w{public permissive restricted forbidden }
   }
 end

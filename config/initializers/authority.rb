@@ -43,7 +43,9 @@ Authority.configure do |config|
     :view   => 'viewable',
     :edit => 'editable',
     :delete => 'deletable',
-    :share => 'sharable'
+    :share => 'sharable',
+    :contribute => 'contributable',
+    :suggest_contribution => 'suggestively_contributable'
   }
 
   # LOGGER

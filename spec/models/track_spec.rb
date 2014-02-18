@@ -79,6 +79,56 @@ describe Track do
       )
       expect(p.track.viewable_by? p.user).to be true
     end
+  end
 
+  context "with public contributability" do
+    before :each do
+      @track = build :track, contributability: 'public'
+    end
+
+    it "accepts contribution from any signed in user" do
+      expect(build(:user).can_contribute? @track).to be true
+    end
+
+    it "doesn't accept contribution from guests" do
+      expect(@track.contributable_by? nil).to be false
+    end
+
+    it "doesn't accept contribution from blacklisted users" do
+    end
+  end
+
+  context "with restricted contributability" do
+    before :each do
+      @track = build :track, contributability: 'restricted'
+    end
+
+    it "doesn't accept contribution from arbitrary signed in user" do
+      expect(build(:user).can_contribute? @track).to be false
+    end
+
+    it "doesn't accept contribution from guests" do
+      expect(@track.contributable_by? nil).to be false
+    end
+
+    it "doesn't accept contribution from blacklisted users" do
+      @track.save!
+      user = create(:user)
+      Permission.create user: user, track: @track, can_contribute: false
+      expect(@track.contributable_by? user).to be false
+    end
+
+    it "accepts contributions from whitelisted users" do
+      @track.save!
+      user = create(:user)
+      Permission.create user: user, track: @track, can_contribute: true
+      expect(@track.contributable_by? user).to be true
+    end
+  end
+
+  context "with permissive contributability" do
+  end
+
+  context "with forbidden contributability" do
   end
 end

@@ -56,12 +56,12 @@ class TrackAuthorizer < Authority::Authorizer
   def contributable_by?(user)
     return false if user.nil?
     case resource.contributability
-    when 'open'
+    when 'public'
       resource.permissions.where(
         user: user,
         can_contribute: false
       ).length == 0
-    when %w{permissive restricted}
+    when 'permissive', 'restricted'
       resource.owner_id == user.id or
       resource.permissions.where(
         user: user,

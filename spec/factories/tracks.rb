@@ -6,6 +6,6 @@ FactoryGirl.define do
     description "Learn how to develop cutting edge rails applications following TDD approach"
     owner factory: :user
     visibility 'open'
-    contributability 'open'
+    contributability 'public'
   end
 end
