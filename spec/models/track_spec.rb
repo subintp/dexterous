@@ -19,8 +19,22 @@ describe Track do
     expect(Track.creatable_by? build(:user)).to be true
   end
 
-  context "with public visibility" do
+  context "with open visibility" do
 
+    before :each do
+      @track = build :track, visibility: 'open'
+    end
+
+    it "can be viewed by any user" do
+      expect(build(:user).can_view? @track).to be true
+    end
+
+    it "can be viewed by guests" do
+      expect(@track.viewable_by? nil).to be true
+    end
+  end
+
+  context "with public visibility" do
     before :each do
       @track = build :track, visibility: 'public'
     end
@@ -29,5 +43,9 @@ describe Track do
       expect(build(:user).can_view? @track).to be true
     end
 
+    it "can not be viewed by guests" do
+      expect(@track.viewable_by? nil).to be false
+    end
   end
+
 end
