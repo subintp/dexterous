@@ -1,18 +1,30 @@
 class Track < ActiveRecord::Base
   include Authority::Abilities
 
-  belongs_to :creator, class_name: 'User'
-  after_create :add_creator_as_contributor
-  has_many :contributors, as: 'target'
+  belongs_to :owner, class_name: 'User'
+  after_create :add_creator_as_manager
 
-  private
+  # visibility:
+  # ----------
+  #   open       => Is visible to all users, guests and search engines
+  #   public     => Is visibile to any signed in users,
+  #                 except possibly blacklisted users
+  #   restricted => Is visible to whitelisted set of users
+  #   private    => Visible only to owner
+  validates :visibility, inclusion: {
+    in: %w{public open restricted private}
+  }
 
-  def add_creator_as_contributor
-    Contributor.create(
-      target: self,
-      user: creator,
-      is_admin: true
-    )
-  end
-
+  # contributability:
+  # ----------------
+  #   open       => Any signed in user, with the exception of blacklisted users,
+  #                 can make contribution
+  #   permissive => Any signed in user, with the exception of blacklisted users
+  #                 can suggest contribution, which will need to be moderated by
+  #                 an editor/contributor
+  #   restricted => Explicitly whitelisted set of contributors can contribute
+  #   forbidden  => Only owner can contribute
+  validates :contributability, inclusion: {
+    in: %w{open permissive restricted forbidden }
+  }
 end

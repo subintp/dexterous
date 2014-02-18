@@ -11,27 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217170627) do
+ActiveRecord::Schema.define(version: 20140217205055) do
 
   create_table "achievements", force: true do |t|
     t.integer  "user_id"
     t.integer  "milestone_id"
     t.integer  "duration"
     t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contributors", force: true do |t|
-    t.integer  "target_id"
-    t.integer  "target_type"
-    t.integer  "user_id"
-    t.integer  "requester_id"
-    t.integer  "approver_id"
-    t.boolean  "approved"
-    t.boolean  "can_view"
-    t.boolean  "can_edit"
-    t.boolean  "is_admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +40,17 @@ ActiveRecord::Schema.define(version: 20140217170627) do
     t.text     "description"
     t.integer  "expected_duration"
     t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "track_id"
+    t.boolean  "can_view"
+    t.boolean  "can_edit"
+    t.boolean  "can_contribute"
+    t.boolean  "can_manage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

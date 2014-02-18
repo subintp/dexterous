@@ -7,22 +7,31 @@ class User < ActiveRecord::Base
 
   include Authority::UserAbilities
 
-  has_many :contributors
+  has_many :permissions
 
-  has_many :tracks,
-    through: :contributors,
-    as: :target
+  {
+    view: :viewable,
+    edit: :editable,
+    contribute: :contributable,
+    manage: :manageable
+  }.each do |verb, adjective|
 
-  has_many :created_tracks,
-    inverse_of: :creator,
-    class_name: 'Track'
+    has_many :"#{verb}_permissions", {
+        class_name: 'Permission'
+      }, -> { where(:"can_#{verb}" => true) }
 
-  has_many :requested_contributors,
-    class_name: 'Contributor',
-    inverse_of: :requester
+    has_many :"#{adjective}_tracks",
+      source: 'track',
+      through: :"#{verb}_permissions"
 
-  has_many :moderated_contributors,
-    class_name: 'Contributor',
-    inverse_of: :approver
+  end
+
+  %w{Track Milestone LearningResource}.each do |resource|
+
+    has_many :"created_#{resource.underscore.pluralize}",
+      inverse_of: :creator,
+      class_name: resource
+
+  end
 
 end
