@@ -55,8 +55,30 @@ describe Track do
         expect(track.viewable_by? user).to be false
         expect(user.can_view? track).to be false
       end
-
     end
   end
 
+  context "with restricted visibility" do
+    before :each do
+      @track = build :track, visibility: 'restricted'
+    end
+
+    it "can not be viewed by guests" do
+      expect(@track.viewable_by? nil).to be false
+    end
+
+    it "can not be viewed by non-enrolled users" do
+      expect(@track.viewable_by? build :user).to be false
+    end
+
+    it "can be viewed by whitelisted users" do
+      p = Permission.create(
+        track: create(:track, visibility: 'restricted'),
+        user: create(:user),
+        can_view: true
+      )
+      expect(p.track.viewable_by? p.user).to be true
+    end
+
+  end
 end
