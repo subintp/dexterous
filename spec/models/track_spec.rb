@@ -18,4 +18,13 @@ describe Track do
   it "can be created by any user" do
     expect(Track.creatable_by? build(:user)).to be true
   end
+
+  context "with public visibility" do
+
+
+    it "can be viewed by any user" do
+
+    end
+
+  end
 end
