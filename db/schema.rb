@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140217205055) do
     t.string   "title"
     t.integer  "milestone_id"
     t.integer  "track_id"
+    t.integer  "owner_id"
     t.text     "description"
     t.text     "metadata"
     t.datetime "created_at"
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140217205055) do
   end
 
   create_table "milestones", force: true do |t|
-    t.integer  "creator_id"
+    t.integer  "owner_id"
     t.integer  "track_id"
     t.string   "title"
     t.text     "description"
@@ -56,9 +57,11 @@ ActiveRecord::Schema.define(version: 20140217205055) do
   end
 
   create_table "tracks", force: true do |t|
-    t.integer  "creator_id"
+    t.integer  "owner_id"
     t.string   "title"
     t.text     "description"
+    t.string   "visibility"
+    t.string   "contributability"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
