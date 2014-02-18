@@ -2,7 +2,6 @@ class Track < ActiveRecord::Base
   include Authority::Abilities
 
   belongs_to :owner, class_name: 'User'
-  after_create :add_creator_as_manager
 
   # visibility:
   # ----------
