@@ -1,5 +1,46 @@
 /*
  *= require font-kit-rails/ubuntu
- *= require_self
  *= require_tree .
+ *= require_self
  */
+
+$l-side-w = 64px
+
+body
+  background #171B1D
+  font-family 'Ubuntu'
+  font-size 100%
+#l-side-nav
+  background #292F31
+  position absolute
+  left 0
+  bottom 0
+  top 0
+  width $l-side-w
+  ul
+    margin 0
+    padding 0
+    a
+      display block
+      height $l-side-w
+      width $l-side-w
+      background-repeat no-repeat
+      background-position center center
+    .home
+      background-image url('/assets/home.png')
+    .explore
+      background-image url('/assets/paper_plane.png')
+#body
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left $l-side-w
+  h1
+    color white
+    font-size 3em
+  h2
+    color #00AFEE
+    font-size 2em
+#r-side-nav
+  background #F0EFED
