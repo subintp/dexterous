@@ -1,11 +1,13 @@
 Dexterous::Application.routes.draw do
+
+  root 'home#index'
+  get 'dashboard' => 'home#dashboard'
+
   resources :learning_resources
-
   resources :milestones
-
   resources :tracks
-
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
