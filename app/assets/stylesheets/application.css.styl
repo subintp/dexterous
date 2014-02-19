@@ -1,46 +1,50 @@
 /*
  *= require font-kit-rails/ubuntu
+ *= require fff-tusj/stylesheet
  *= require_tree .
  *= require_self
  */
 
-$l-side-w = 64px
+blue-prime = #0090FF
+blue-dark = #0C2979
 
 body
-  background #171B1D
   font-family 'Ubuntu'
   font-size 100%
-#l-side-nav
-  background #292F31
+  background white
+html, body
+  height 100%
+  width 100%
+#main-banner
   position absolute
-  left 0
-  bottom 0
-  top 0
-  width $l-side-w
-  ul
-    margin 0
-    padding 0
-    a
-      display block
-      height $l-side-w
-      width $l-side-w
-      background-repeat no-repeat
-      background-position center center
-    .home
-      background-image url('/assets/home.png')
-    .explore
-      background-image url('/assets/paper_plane.png')
-#body
-  position absolute
-  top 0
-  right 0
-  bottom 0
-  left $l-side-w
+  top 50%
+  right 5em
+  margin-top -60px
   h1
-    color white
+    color blue-prime
     font-size 3em
+    padding-bottom 0.3em
   h2
-    color #00AFEE
+    color silver
     font-size 2em
-#r-side-nav
-  background #F0EFED
+    padding-bottom 0.5em
+  h1, h2
+    text-align right
+#nav-main
+  float right
+  padding-top 0.5em
+  li
+    float right
+    border 2px solid blue-prime
+    border-radius 1em
+    margin 0 0.5em
+    a
+      text-decoration none
+      line-height 1.6em
+      font-size 1em
+      display inline-block
+      padding 0 1em
+      border-left 2px solid blue-prime
+      color blue-prime
+    a:first-child
+      border-left none

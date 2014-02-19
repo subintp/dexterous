@@ -1,10 +1,17 @@
-%h1 Dexterous
-%h2 Time and Resource planner for motivated self-learners
+#main-banner
+  %h1 Dexterous
+  %h2 Time and Resource planner for motivated self-learners
+  %ul#nav-main
+    %li
+      - if user_signed_in?
+        = link_to('Account', edit_user_registration_path)
+        = link_to('Logout', destroy_user_session_path, :method => :delete)
+      - else
+        = link_to('Login', new_user_session_path)
+        = link_to('Register', new_user_registration_path)
 
-%ul
-  %li.rounded
-    %a{href: '/home/tour'} Take the tour
-  %li.rounded
-    %a{href: '/users/sign_up'} Sign Up
-    %a{href: '/users/sign_in'} Sign In
-
+    %li
+      - if user_signed_in?
+        %a{href: '#'} Dashboard
+      - else
+        %a{href: '#'} Learn More
