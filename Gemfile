@@ -17,6 +17,7 @@ end
 
 gem 'authority'
 gem 'unicorn-rails'
+gem 'haml-rails'
 gem 'react-rails'
 
 group :development , :test do
