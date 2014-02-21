@@ -1,17 +1,23 @@
-#main-banner
-  %h1 Dexterous
+%section#banner
+  %h1 dexterous
+%section#descr-mini
   %h2 Time and Resource planner for motivated self-learners
-  %ul#nav-main
-    %li
-      - if user_signed_in?
-        = link_to('Account', edit_user_registration_path)
-        = link_to('Logout', destroy_user_session_path, :method => :delete)
-      - else
-        = link_to('Login', new_user_session_path)
-        = link_to('Register', new_user_registration_path)
+%section#descr-promo
+  Schedule your time,
+  Organize resources
+  Invite Collaborators
+  Get stuff done.
+%ul#nav-main
+  %li
+    - if user_signed_in?
+      = link_to('Account', edit_user_registration_path)
+      = link_to('Logout', destroy_user_session_path, :method => :delete)
+    - else
+      = link_to('Login', new_user_session_path)
+      = link_to('Register', new_user_registration_path)
 
-    %li
-      - if user_signed_in?
-        %a{href: '#'} Dashboard
-      - else
-        %a{href: '#'} Learn More
+  %li
+    - if user_signed_in?
+      %a{href: '#'} Dashboard
+    - else
+      %a{href: '#'} Learn More
