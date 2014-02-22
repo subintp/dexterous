@@ -1,30 +1,22 @@
+//= require ./pure_customizations
+
+@import './mixins/colors'
+
 hdr-h = 40px
 ftr-h = 30px
 
-col-ruby = #CF0018
-col-orange = #F6D76D
-
 #dashboard
-  position absolute
-  top 0
-  left 0
-  right 0
-  bottom 0
   overflow hidden
   font-family: 'Raleway', sans-serif
   background #D9D9D9
 
   header
-    position absolute
-    left 0
-    right 0
-    top 0
     height hdr-h
     background #E6E6E6
     border-bottom 2px solid #C8C8C8
     overflow hidden
     h1
-      color col-ruby
+      color col-red-prime
       line-height hdr-h
       padding-left 20px
       font-weight bold
@@ -51,20 +43,12 @@ col-orange = #F6D76D
       padding 0 10px
       margin-right 20px
   .body
-    position absolute
-    left 0
-    right 0
-    top hdr-h
-    bottom ftr-h
     overflow auto
   footer
     height ftr-h
     line-height ftr-h
     font-size 0.8em
-    position absolute
-    left 0
-    right 0
-    bottom 0
+    text-align center
     background #C8C8C8
 
   #new-track-form
@@ -80,23 +64,58 @@ col-orange = #F6D76D
   width  80%
   margin 100px auto
   background white
-  border-top col-orange 4px solid
+  border-top col-orange-prime 4px solid
   .wizard-title
     h1
       text-align center
       line-height 2.5em
       margin 0
       padding 0
-      color col-ruby
+      color col-red-prime
   .wizard-body
     padding 10px
-    min-height 300px
     text-align center
     label
       font-size 2em
       display block
       margin-top 30px
-    input, textarea
+    .select-wrapper
+      margin 10px auto
+    input[type='text'], input[type='password'], textarea
       margin 20px 0
+      border 1px dashed #C8C8C8
+      width 80%
+      box-shadow none
+      background transparent
+      font-size 1.5em
+      line-height 1.5em
+      text-align center
+      outline 0
+      border-bottom 1px solid #C8C8C8
+      &:focus
+        border-bottom 1px solid col-red-prime
   .wizard-footer
-    height 1em
+    padding-bottom 10px
+    text-align center
+    .pure-button-secondary
+      margin-right 10px
+
+.select-wrapper
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  background: #fff url("/assets/arrowdown.gif") no-repeat 90% 50%;
+  select
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    appearance: none;
+  select:focus
+    outline: none;
