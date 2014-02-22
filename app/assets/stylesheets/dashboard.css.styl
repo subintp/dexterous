@@ -1,6 +1,8 @@
 hdr-h = 40px
 ftr-h = 30px
-col-ruby = #A52103
+
+col-ruby = #CF0018
+col-orange = #F6D76D
 
 #dashboard
   position absolute
@@ -9,7 +11,7 @@ col-ruby = #A52103
   right 0
   bottom 0
   overflow hidden
-  font-family sans-serif
+  font-family: 'Raleway', sans-serif
   background #D9D9D9
 
   header
@@ -77,16 +79,24 @@ col-ruby = #A52103
 #track-creation-wizard
   width  80%
   margin 100px auto
+  background white
+  border-top col-orange 4px solid
   .wizard-title
-    background #333
-    color white
     h1
       text-align center
       line-height 2.5em
       margin 0
       padding 0
+      color col-ruby
   .wizard-body
-    background white
     padding 10px
+    min-height 300px
+    text-align center
+    label
+      font-size 2em
+      display block
+      margin-top 30px
+    input, textarea
+      margin 20px 0
   .wizard-footer
     height 1em
