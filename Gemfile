@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
 gem 'mysql2'
-gem 'sass' # we need it for font-kit
 gem 'stylus'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
@@ -19,8 +18,6 @@ end
 gem 'authority'
 gem 'unicorn-rails'
 gem 'haml-rails'
-gem 'font-kit-rails'
-gem 'react-rails'
 
 gem 'opal-rails',         :github => 'opal/opal-rails'
 gem 'opal',               :github => 'opal/opal'
