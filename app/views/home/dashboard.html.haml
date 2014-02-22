@@ -1,5 +1,17 @@
 - if @tracks.length == 0
   = render partial: 'introduction'
 - else
-  - @tracks.each do |track|
-    %h3= track.title
+  #tracks-container
+    - @tracks.each do |track|
+      .track-wrapper
+        .track-inner
+          %header
+            %h3= track.title
+          .body
+            %h4 Upcoming milestones
+            None
+          %footer
+            = link_to 'View Track', controller: 'tracks', action: 'show', id: track.id
+
+= javascript_include_tag "dashboard"
+          

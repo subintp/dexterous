@@ -123,3 +123,31 @@ a
     appearance: none;
   select:focus
     outline: none;
+
+.track-wrapper
+  width 300px
+  float left
+  position relative
+  .track-inner
+    position absolute
+    background #FAF9F7
+    top 10px
+    left 10px
+    right 10px
+    bottom 10px
+    & > header, & > footer
+      left 0
+      right 0
+      position absolute
+      height 30px
+    & > header
+      top 0
+    & > footer
+      bottom 0
+    & > .body
+      position absolute
+      left 0
+      right 0
+      top 30px
+      bottom 30px
+
