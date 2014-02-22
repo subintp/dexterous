@@ -5,6 +5,7 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "#{controller.controller_name}/#{controller.action_name}"
     = csrf_meta_tags
+    = yield :head if content_for? :head
   %body
     %p.notice= notice
     %p.alert= alert
