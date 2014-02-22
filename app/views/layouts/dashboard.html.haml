@@ -5,10 +5,11 @@
   #dashboard
     %header
       .lfloat
-        %h1 dexterous
+        %h1
+          %a{href: '/'} dexterous
       .rfloat
         %input#search-form{placeholder: 'search'}
-        %a.prime Create track
+        = link_to 'Create track', { controller: 'tracks', action: 'new' } , {class: 'prime'}
     .body
       = yield
     %footer
