@@ -6,6 +6,13 @@
     .lfloat
       %h1 dexterous
     .rfloat
+      %input#search-form{placeholder: 'search'}
       %a.prime Create track
   .body
+    - if @tracks.length == 0
+      = render partial: 'introduction'
+      You are not enrolled in any track
+    - else
+      - @tracks.each do |track|
+        %h3= @track.title
   %footer
