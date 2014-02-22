@@ -15,4 +15,13 @@ describe User do
   end
   it { is_expected.to have_many(:tracks).through(:permissions) }
   it { is_expected.to have_many(:owned_tracks) }
+  it { is_expected.to have_many :enrollments }
+  it { is_expected.to have_many(:enrolled_tracks)
+      .through(:enrollments)
+      .source(:track)
+  }
+  it { is_expected.to have_many(:completed_milestones)
+      .through(:enrollments)
+      .source(:milestone)
+  }
 end

@@ -14,6 +14,8 @@ describe Track do
   end
 
   it { is_expected.to belong_to :owner }
+  it { is_expected.to have_many :permissions }
+  it { is_expected.to have_many :enrollments }
 
   it "can be created by any user" do
     expect(Track.creatable_by? build(:user)).to be true

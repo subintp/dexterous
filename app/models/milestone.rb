@@ -5,5 +5,8 @@ class Milestone < ActiveRecord::Base
 
   belongs_to :track
   belongs_to :owner, class_name: 'User'
-
+  has_and_belongs_to_many :enrollments
+  has_many :completers,
+    through: :enrollments,
+    source: :user
 end

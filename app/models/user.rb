@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   has_many :permissions
   has_many :tracks, through: :permissions
   has_many :enrollments
+  has_many :enrolled_tracks,
+    through: :enrollments,
+    source: :track
+  has_many :completed_milestones,
+    through: :enrollments,
+    source: :milestone
 
   {
     view:       :viewable,
