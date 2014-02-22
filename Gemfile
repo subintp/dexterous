@@ -24,6 +24,7 @@ gem 'react-rails'
 
 gem 'opal-rails',         :github => 'opal/opal-rails'
 gem 'opal',               :github => 'opal/opal'
+gem 'opal-browser',       :github => 'opal/opal-browser'
 gem 'opal-jquery',        :github => 'opal/opal-jquery'
 gem 'opal-activesupport', :github => 'opal/opal-activesupport'
 gem 'opal-rspec',         '0.3.0.beta2'
