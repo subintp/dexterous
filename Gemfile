@@ -18,13 +18,7 @@ end
 gem 'authority'
 gem 'unicorn-rails'
 gem 'haml-rails'
-
-gem 'opal-rails',         :github => 'opal/opal-rails'
-gem 'opal',               :github => 'opal/opal'
-gem 'opal-browser',       :github => 'opal/opal-browser'
-gem 'opal-jquery',        :github => 'opal/opal-jquery'
-gem 'opal-activesupport', :github => 'opal/opal-activesupport'
-gem 'opal-rspec',         '0.3.0.beta2'
+gem 'coffee-rails'
 
 group :development , :test do
   gem 'cucumber-rails', require: false
@@ -32,7 +26,7 @@ group :development , :test do
   gem 'rspec-core', '~> 3.0.0.beta2',
     github: 'rspec/rspec-core',
     branch: 'master'
-  %w[ expectations mocks rails support ].each do |name|
+  %w[expectations mocks rails support].each do |name|
     gem "rspec-#{name}",
       github: "rspec/rspec-#{name}",
       branch: 'master'

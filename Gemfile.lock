@@ -8,48 +8,6 @@ GIT
       rspec (>= 2.14, < 4.0)
 
 GIT
-  remote: git://github.com/opal/opal-activesupport.git
-  revision: 1f244428eb567928238c9890fc09006b8eba3fa1
-  specs:
-    opal-activesupport (0.0.5)
-      opal (>= 0.5.0, < 1.0.0)
-
-GIT
-  remote: git://github.com/opal/opal-browser.git
-  revision: 2cfd6c524db6c8dafeeaf158db71362c5b65db17
-  specs:
-    opal-browser (0.2.0.beta1)
-      opal (~> 0.6.0)
-      paggio
-
-GIT
-  remote: git://github.com/opal/opal-jquery.git
-  revision: 1814202085f168176231b877b2b7a967b75b0726
-  specs:
-    opal-jquery (0.1.2)
-      opal (>= 0.5.0, < 1.0.0)
-
-GIT
-  remote: git://github.com/opal/opal-rails.git
-  revision: 16ed97ffae957e05e0fbc0ca605d4d6b6adb3044
-  specs:
-    opal-rails (0.6.2)
-      jquery-rails
-      opal (~> 0.6.0)
-      opal-activesupport (>= 0.0.5)
-      opal-jquery (>= 0.1.0)
-      opal-rspec (~> 0.3.0.beta1)
-      rails (>= 3.2.13, < 5.0)
-
-GIT
-  remote: git://github.com/opal/opal.git
-  revision: cbca29d6cb9b11bc788113f6663512f3b00c1805
-  specs:
-    opal (0.6.0)
-      source_map
-      sprockets
-
-GIT
   remote: git://github.com/rspec/rspec-core.git
   revision: e71ee840ecf2de1df0c4db938e19d4935ce8d183
   branch: master
@@ -145,6 +103,13 @@ GEM
       celluloid (>= 0.15.0)
       nio4r (>= 0.5.0)
     coderay (1.1.0)
+    coffee-rails (4.0.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.7.0)
     columnize (0.3.6)
     cucumber (1.3.10)
       builder (>= 2.1.2)
@@ -233,10 +198,7 @@ GEM
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    opal-rspec (0.3.0.beta2)
-      opal (>= 0.6.0, < 1.0.0)
     orm_adapter (0.5.0)
-    paggio (0.2.4)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -279,8 +241,6 @@ GEM
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
     slop (3.4.7)
-    source_map (3.0.1)
-      json
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -323,6 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   authority
+  coffee-rails
   cucumber-rails
   database_cleaner
   debugger
@@ -334,12 +295,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
-  opal!
-  opal-activesupport!
-  opal-browser!
-  opal-jquery!
-  opal-rails!
-  opal-rspec (= 0.3.0.beta2)
   rack-livereload
   rails (= 4.0.2)
   rspec (~> 3.0.0.beta2)
