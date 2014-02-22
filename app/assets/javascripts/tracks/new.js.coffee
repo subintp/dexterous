@@ -1,3 +1,4 @@
+#= require ../application
 #= require knockout
 
 wizard_view_model =

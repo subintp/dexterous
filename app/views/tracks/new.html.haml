@@ -6,17 +6,17 @@
     - @track.errors.full_messages.each do |msg|
       %p.error= msg
     = form_for @track do |f|
-      %section{'data-bind' => 'if:step() == 0'}
+      %section{'data-bind' => 'visible:step() == 0'}
         = f.label :title, 'I would like to explore : '
         = f.text_field :title, placeholder: 'eg. Ruby on Rails'
-      %section{'data-bind' => 'if: step() == 1'}
+      %section{'data-bind' => 'visible: step() == 1'}
         = f.label :description, 'Add a small description for your track (Optional)'
         = f.text_area :description
-      %section{'data-bind' => 'if: step() == 2'}
+      %section{'data-bind' => 'visible: step() == 2'}
         = f.label :visibility, 'Who can view the track'
         .select-wrapper
           = f.select :visibility, [['Only me', 'private'], ['Me and people I share with', 'restricted'], ['Any user', 'public'], ['Anyone including anonymous guests and search engines', 'open']]
-      %section{'data-bind' => 'if: step() == 3'}
+      %section{'data-bind' => 'visible: step() == 3'}
         = f.label :contributability, 'Who can contribute to the track?'
         .select-wrapper
           = f.select :contributability, [['Only me', 'private'], ['Me and people I share with', 'restricted'], ['Allow users to contribute suggestions', 'permissive'], ['Any user', 'public']]

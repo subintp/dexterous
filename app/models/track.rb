@@ -4,6 +4,8 @@ class Track < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :permissions
   has_many :enrollments
+  has_many :milestones
+  after_create :enroll
 
   # visibility:
   # ----------
@@ -24,8 +26,14 @@ class Track < ActiveRecord::Base
   #                 can suggest contribution, which will need to be moderated by
   #                 an editor/contributor
   #   restricted => Explicitly whitelisted set of contributors can contribute
-  #   forbidden  => Only owner can contribute
+  #   private    => Only owner can contribute
   validates :contributability, inclusion: {
-    in: %w{public permissive restricted forbidden }
+    in: %w{public permissive restricted private }
   }
+
+  private
+
+  def enroll
+    owner.enrolled_tracks << self
+  end
 end
