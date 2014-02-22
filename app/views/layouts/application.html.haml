@@ -6,7 +6,7 @@
     = csrf_meta_tags
     = yield :head if content_for? :head
   %body
-    %p.notice= notice
-    %p.alert= alert
+    .notice= notice
+    .alert= alert
 
     = content_for?(:content) ? yield(:content) : yield
