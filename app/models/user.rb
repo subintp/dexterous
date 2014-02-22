@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :permissions
   has_many :tracks, through: :permissions
+  has_many :enrollments
 
   {
     view:       :viewable,
