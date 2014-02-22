@@ -1,6 +1,5 @@
 - content_for :head do
   = stylesheet_link_tag 'dashboard', media: "all"
-  = javascript_include_tag 'dashboard'
 
 - content_for :content do
   #dashboard
@@ -14,6 +13,5 @@
       = yield
     %footer
       dexterous is free software. &copy; 2014 Lorefnon 
-  
 
 = render template: 'layouts/application'
