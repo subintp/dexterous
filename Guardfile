@@ -16,10 +16,6 @@ end
 
 guard :rspec do
 
-  ::RSpec::Core::ConfigurationOptions.class_eval do
-    alias :parse_options :options
-  end
-
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

@@ -25,12 +25,20 @@ gem 'react-rails'
 group :development , :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  %w[ core expectations mocks rails support ].each do |name|
+  gem 'rspec-core', '~> 3.0.0.beta2',
+    github: 'rspec/rspec-core',
+    branch: 'master'
+  %w[ expectations mocks rails support ].each do |name|
     gem "rspec-#{name}",
       github: "rspec/rspec-#{name}",
       branch: 'master'
   end
-  gem 'guard-rspec', require: false
+  gem 'rspec', '~> 3.0.0.beta2'
+  gem 'guard-rspec',
+    github: '907th/guard-rspec',
+    branch: 'fix_249'
+
+  # gem 'guard-rspec', require: false
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'debugger'
