@@ -13,8 +13,9 @@ Dexterous::Application.routes.draw do
   end
 
   devise_for :users
+
   resources :users do
-    get 'tracks/:critaria', 'tracks#index'
+    get 'tracks/:critaria' => 'tracks#index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

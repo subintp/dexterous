@@ -1,0 +1,17 @@
+- content_for :head do
+  = stylesheet_link_tag "dashboard", media: "all"
+
+- content_for :content do
+  #dashboard
+    %header
+      .lfloat
+        %h1 dexterous
+      .rfloat
+        %input#search-form{placeholder: 'search'}
+        %a.prime Create track
+    .body
+      = yield
+    %footer
+      dexterous is free software. &copy; 2014 Lorefnon 
+
+= render template: 'layouts/application'

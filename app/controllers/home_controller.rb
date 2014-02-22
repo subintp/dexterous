@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def dashboard
     @tracks = current_user.enrolled_tracks.includes :milestones
     @new_track = Track.new
+    render 'dashboard', layout: 'dashboard'
   end
 
 end

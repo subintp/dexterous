@@ -1,0 +1,6 @@
+.wizard
+  = form_for @track do |f|
+    %section.step{'data-step' => 1}
+      = f.label :title, 'I would like to explore : '
+      = f.text_field :title, placeholder: 'eg. Ruby on Rails'
+    %section

@@ -1,18 +1,5 @@
-- content_for :head do
-  = stylesheet_link_tag "dashboard", media: "all"
-
-#dashboard
-  %header
-    .lfloat
-      %h1 dexterous
-    .rfloat
-      %input#search-form{placeholder: 'search'}
-      %a.prime Create track
-  .body
-    - if @tracks.length == 0
-      = render partial: 'introduction'
-      You are not enrolled in any track
-    - else
-      - @tracks.each do |track|
-        %h3= @track.title
-  %footer
+- if @tracks.length == 0
+  = render partial: 'introduction'
+- else
+  - @tracks.each do |track|
+    %h3= @track.title
