@@ -13,36 +13,43 @@ blue-dark = #0D6289
 body
   font-family sans-serif
   font-size 100%
-  background white
+  background #D9D9D9
 html, body
   height 100%
   width 100%
-#descr-mini
-  background: #DFDFDF
-  border-bottom: 2px solid #C8C8C8
-  background-image: linear-gradient(to bottom, white 0%, #EEE 100%)
-
-  h2
-    font-size 1.1em
-    padding 0.5em 2em 0.5em 2em
-    color blue-dark
-    font-weight 200
-    text-align right
 
 #banner
-  background blue-decent
-  padding 5em 2em 0 2em
-  box-shadow inset 0 0 2px 3px rgba(0,0,0,0.3)
-  overflow hidden
-  h1
-    font-size 6.5em
-    margin 0
-    color white
-    position relative
-    bottom -0.2em
-    text-shadow 0 0 8px rgba(0,0,0,0.6)
-    font-weight 400
-    text-align right
+  background #333
+  background -moz-radial-gradient(center, ellipse cover, #333 0%, #000 100%)
+  background -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#333), color-stop(100%,#000))
+  background -webkit-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
+  background -o-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
+  background -ms-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
+  background radial-gradient(center, ellipse cover, #333 0%,#000 100%)
+  border-bottom 3px solid #C8C8C8
+
+  .inner-1
+    background url('/assets/stripes.png')
+
+    .inner-2
+      background url('/assets/noise.png')
+
+      .inner-3
+        padding 180px 0
+        width 80%
+        margin 0 auto
+        overflow hidden
+        h1
+          font-size 4.5em
+          margin 0
+          color white
+          font-weight 400
+          padding-bottom 20px
+        h2
+          font-size 2.1em
+          color #E6E6E6
+          font-weight 200
+
 
 #nav-main
   float right
