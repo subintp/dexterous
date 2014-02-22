@@ -5,8 +5,17 @@ Dexterous::Application.routes.draw do
 
   resources :learning_resources
   resources :milestones
-  resources :tracks
+
+  resources :tracks, {shallow: true} do
+    resources :milestones, {shallow: true} do
+      resources :learning_resources
+    end
+  end
+
   devise_for :users
+  resources :users do
+    get 'tracks/:critaria', 'tracks#index'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
