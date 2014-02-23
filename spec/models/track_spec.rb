@@ -151,7 +151,7 @@ describe Track do
     end
   end
 
-  context "with forbidden contributability" do
+  context "with private contributability" do
     before :each do
       @track = build :track, contributability: 'private'
     end

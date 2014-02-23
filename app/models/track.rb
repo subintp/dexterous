@@ -33,9 +33,20 @@ class Track < ActiveRecord::Base
     in: %w{public permissive restricted private }
   }
 
+  def milestones_for(user)
+    return nil unless viewable_by? user
+    milestones.map do |m|
+      m.serializable_hash.merge(
+        editable: m.editable_by?(user),
+        deletable: m.deletable_by?(user)
+      )
+    end
+  end
+
   private
 
   def enroll
     owner.enrolled_tracks << self
   end
+
 end

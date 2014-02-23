@@ -8,6 +8,15 @@
       %li
         .thumb
         .pointer
+        .controls.rfloat
+          // ko: if: editable
+          %a.edit-thumb
+            %i.fa.fa-edit
+          // /ko
+          // ko: if: deletable
+          %a.del-thumb
+            %i.fa.fa-trash-o
+          // /ko
         %h1{'data-bind' => "text: title"}
         %div
           %p.description{'data-bind' => 'text: description'}
@@ -39,7 +48,7 @@
 = javascript_include_tag "tracks/show"
 %script
   != "app.viewModels.track = new dx.Track(#{@track.to_json});"
-  - @track.milestones.each do |m|
+  - @track.milestones_for(current_user).each do |m|
     != "app.viewModels.milestones.push(new dx.Milestone(#{m.to_json}));"
   - @track.learning_resources.each do |l|
     != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
