@@ -1,9 +1,5 @@
-class @ViewModel
+class dx.ViewModel
     serialize: ->
-        if @constructor.serializable?
-            
-        else
-            # Serialize everything 
 
     constructor: (params)->
         params ?= {}

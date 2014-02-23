@@ -18,10 +18,10 @@
 
 = javascript_include_tag "tracks/show"
 %script
-  != "app.viewModels.track = new Track(#{@track.to_json});"
+  != "app.viewModels.track = new dx.Track(#{@track.to_json});"
   - @track.milestones.each do |m|
-    != "app.viewModels.milestones.push(new Milestone(#{m.to_json}));"
+    != "app.viewModels.milestones.push(new dx.Milestone(#{m.to_json}));"
   - @track.learning_resources.each do |l|
-    != "app.viewModels.learningResources.push(new LearningResource(#{l.to_json}));"
+    != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
   ko.applyBindings(app.viewModels);
   

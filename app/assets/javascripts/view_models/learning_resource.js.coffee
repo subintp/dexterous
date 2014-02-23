@@ -1,3 +1,3 @@
 #= require ./view_model
 
-class @Milestone extends @ViewModel
+class dx.Milestone extends dx.ViewModel
