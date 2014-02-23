@@ -17,11 +17,11 @@
               %i.fa.fa-clock-o
               Created:
             %div{'data-bind' => 'timeago: created_at'}
-          .updated-timestap.timestamp-inner
+          .updated-timestap.timestamp-inner{'data-bind' => 'if: updated_at() != created_at '}
             %label
               %i.fa.fa-clock-o
               Last updated:
-            %div{'data-bind' => 'timeago: updated_at'}
+            %div{'data-bind' => 'timeago: updated_at()'}
     %ul#pseudo-milestone-list
       %li{'data-bind' => 'with: newMilestone'}
         .thumb
