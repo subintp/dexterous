@@ -1,15 +1,18 @@
 class @ViewModel
+    serialize: ->
+        if @constructor.serializable?
+            
+        else
+            # Serialize everything 
+
     constructor: (params)->
-        staticProps = @constructor.staticProps || []
-        observables = @constructor.observables || []
-        observableArrays = @constructor.observableArrays || []
         params ?= {}
 
-        _.each staticProps, (prop)=>
+        _.each @constructor.staticProps, (prop)=>
             @[prop] = params[prop] || null
 
-        _.each observables, (prop)=>
+        _.each @constructor.observables, (prop)=>
             @[prop] = ko.observable params[prop]
 
-        _.each observableArrays, (prop)=>
+        _.each @constructor.observableArrays, (prop)=>
             @[prop] = ko.observableArray params[prop]

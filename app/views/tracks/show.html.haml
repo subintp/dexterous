@@ -5,15 +5,16 @@
       %li
         %h1{'data-bind' => "text: title"}
     %ul#pseudo-milestone-list
-      %li
+      %li{'data-bind' => 'with: newMilestone'}
         .thumb
         .pointer
-        %h1 New milestone (Click to edit)
-        %div.explanation{'data-bind' => "if: milestones.length == 0"}
-          %p
+        %h1{'data-bind' => 'inlineEditable: title'}
+          New milestone (Click to edit)
+        %div
+          %p{'data-bind' => 'inlineBoxEditable: description'}
             Description of this milestone goes here (Click to edit)
         .controls
-          %a.pure-button.pure-button-primary Save
+          %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
 
 = javascript_include_tag "tracks/show"
 %script
