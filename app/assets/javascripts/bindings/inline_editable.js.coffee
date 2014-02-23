@@ -1,25 +1,29 @@
 init = (tag)->
     (el, accessor)->
-
         el = $ el
         el.on 'click', (e)->
             return if el.hasClass 'under-edit'
+            
+            endEdit = ->
+                el.removeClass 'under-edit'
+                false
 
             accept = ->
                 accessor() input.val()
-                el.removeClass 'under-edit'
-                false
+                endEdit()
                 
             reject = ->
                 el.text accessor()()
-                el.removeClass 'under-edit'
-                false
-                        
+                endEdit()
+
+            container = $('<div class="editable-inner">')
+                .prependTo el
+
             input = $("<#{tag}>")
                 .css
                     height: el.height()
                     width: el.width() - 60
-                .appendTo(el.html(''))
+                .appendTo(container)
                 .val(accessor()())
                 .focus()
                 .blur accept
@@ -30,7 +34,7 @@ init = (tag)->
                         when 13 # enter
                             accept() if tag == 'input' or e.ctrlKey
 
-            el.addClass('under-edit')
+            container.addClass('under-edit')
                 .append(
                     '''
                     <div class="rfloat">
@@ -46,7 +50,17 @@ init = (tag)->
                 .on 'click', '.editable-submit', accept
                 .on 'click', '.editable-reject', reject
 
-update = (el, accessor)-> $(el).text accessor()()
+            el.find('.default').hide()
+
+update = (el, accessor)->
+    val = accessor()()
+    el = $ el
+    if _.isString(val) and val.length > 0
+        el.find('.editable-inner').text(val)
+        el.find('.default').hide()
+    else
+        el.find('.editable-inner').text('')
+        el.find('.default').show()
 
 ko.bindingHandlers.inlineEditable =
     init: init 'input'

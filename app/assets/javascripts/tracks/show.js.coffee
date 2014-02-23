@@ -18,7 +18,7 @@
                     description: @description()
                     track_id: app.viewModels.track.id
                 .then (data)=>
-                    @milestones.push data
+                    app.viewModels.milestones.push data
                     @title ''
                     @description ''
 

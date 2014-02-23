@@ -1,4 +1,5 @@
 #= require ./view_model
 
 class dx.Milestone extends dx.ViewModel
-    observables: ['title', 'description']
+    @staticProps: ['id', 'track_id', 'created_at']
+    @observables: ['title', 'description']

@@ -6,15 +6,21 @@
   #milestones
     %ul#milestone-list{'data-bind' => "foreach: milestones"}
       %li
+        .thumb
+        .pointer
         %h1{'data-bind' => "text: title"}
+        %div
+          %p{'data-bind' => 'text: description'}
+
     %ul#pseudo-milestone-list
       %li{'data-bind' => 'with: newMilestone'}
         .thumb
         .pointer
         %h1{'data-bind' => 'inlineEditable: title'}
-          New milestone (Click to edit)
-        %div
-          %p{'data-bind' => 'inlineBoxEditable: description'}
+          .default
+            New milestone (Click to edit)
+        %div{'data-bind' => 'inlineBoxEditable: description'}
+          .default
             Description of this milestone goes here (Click to edit)
         .controls
           %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
@@ -27,4 +33,3 @@
   - @track.learning_resources.each do |l|
     != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
   ko.applyBindings(app.viewModels);
-  
