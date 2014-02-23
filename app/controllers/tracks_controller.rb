@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   layout 'dashboard'
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
 
   def new
     @track ||= Track.new
@@ -19,6 +19,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.includes(:milestones, :learning_resources).find params[:id]
+    head :not_found unless @track.viewable_by? current_user
   end
 
 end

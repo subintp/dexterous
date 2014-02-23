@@ -23,17 +23,18 @@
               Last updated:
             %div{'data-bind' => 'timeago: updated_at()'}
     %ul#pseudo-milestone-list
-      %li{'data-bind' => 'with: newMilestone'}
-        .thumb
-        .pointer
-        %h1{'data-bind' => 'inlineEditable: title'}
-          .default
-            New milestone (Click to edit)
-        %div.description{'data-bind' => 'inlineBoxEditable: description'}
-          .default
-            Description of this milestone goes here (Click to edit)
-        .controls
-          %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
+      - if @track.contributable_by? current_user
+        %li{'data-bind' => 'with: newMilestone'}
+          .thumb
+          .pointer
+          %h1{'data-bind' => 'inlineEditable: title'}
+            .default
+              New milestone (Click to edit)
+          %div.description{'data-bind' => 'inlineBoxEditable: description'}
+            .default
+              Description of this milestone goes here (Click to edit)
+          .controls
+            %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
 
 = javascript_include_tag "tracks/show"
 %script

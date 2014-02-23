@@ -5,23 +5,28 @@ class TrackAuthorizer < Authority::Authorizer
   end
 
   def viewable_by?(user)
+
+    # Free pass - no queries required
+    if not user.nil? and resource.owner_id == user.id
+      return true
+    end
+
     case resource.visibility
-    when 'open'
-      true
-    when 'public'
-      not user.nil? and
-        resource.permissions.where(
-          user: user,
-          can_view: false
-        ).length == 0
-    when 'restricted'
-      not user.nil? and (
-        resource.owner_id == user.id or
-        resource.permissions.where(
-          user: user,
-          can_view: true
-        ).length > 0
-      )
+      when 'open'
+        true
+      when 'public'
+        not user.nil? and
+          resource.permissions.where(
+            user: user,
+            can_view: false
+          ).length == 0
+      when 'restricted'
+        not user.nil? and resource.permissions.where(
+            user: user,
+            can_view: true
+          ).length > 0
+      else
+        false
     end
   end
 
@@ -55,20 +60,21 @@ class TrackAuthorizer < Authority::Authorizer
 
   def contributable_by?(user)
     return false if user.nil?
+    return true if resource.owner_id == user.id
+
     case resource.contributability
-    when 'public'
-      resource.permissions.where(
-        user: user,
-        can_contribute: false
-      ).length == 0
-    when 'permissive', 'restricted'
-      resource.owner_id == user.id or
-      resource.permissions.where(
-        user: user,
-        can_contribute: true
-      ).length > 0
-    when 'private'
-      resource.owner_id == user.id
+      when 'public'
+        resource.permissions.where(
+          user: user,
+          can_contribute: false
+        ).length == 0
+      when 'permissive', 'restricted'
+        resource.permissions.where(
+          user: user,
+          can_contribute: true
+        ).length > 0
+      else
+        false
     end
   end
 
