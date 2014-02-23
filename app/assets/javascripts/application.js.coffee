@@ -2,4 +2,5 @@
 #= require jquery_ujs
 #= require lodash
 
-window.dx = {}
+window.dx =
+    mixin: {}

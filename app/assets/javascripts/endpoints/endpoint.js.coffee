@@ -1,6 +1,4 @@
 class dx.Endpoint
-    @instance: ->
-        @_instance ?= new this()
     index: (data)->
         $.ajax
             type: 'get'
@@ -20,7 +18,7 @@ class dx.Endpoint
             type: 'put'
             url: "#{@baseUrl}/#{id}"
             data: data
-    destroy: ->
+    destroy: (id)->
         $.ajax
             type: 'delete'
             url: "#{@baseUrl}/#{id}"
