@@ -4,7 +4,9 @@ class Track < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :permissions
   has_many :enrollments
+  has_many :enrolled_users, through: :enrollments, source: :user
   has_many :milestones
+  has_many :learning_resources
   after_create :enroll
 
   # visibility:

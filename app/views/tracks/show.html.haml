@@ -1,0 +1,25 @@
+#timeline
+  #spine
+  #milestones
+    %ul#milestone-list{'data-bind' => "foreach: milestones"}
+      %li
+        %h1{'data-bind' => "text: title"}
+    %ul#pseudo-milestone-list
+      %li
+        .thumb
+        .pointer
+        %h1 New milestone (Click to edit)
+        %div.explanation{'data-bind' => "if: milestones.length == 0"}
+          %p
+            Description of this milestone goes here (Click to edit)
+        .controls
+          %a.pure-button.pure-button-primary Save
+
+= javascript_include_tag "tracks/show"
+%script
+  != "vm.track = new Track(#{@track.to_json});"
+  - @track.milestones.each do |m|
+    != "vm.milestones.push(new Milestone(#{m.to_json}));"
+  - @track.learning_resources.each do |l|
+    != "vm.learningResources.push(new LearningResource(#{l.to_json}));"
+  ko.applyBindings(vm);

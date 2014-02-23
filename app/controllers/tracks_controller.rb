@@ -16,4 +16,9 @@ class TracksController < ApplicationController
   rescue
     render action: 'new'
   end
+
+  def show
+    @track = Track.includes(:milestones, :learning_resources).find params[:id]
+  end
+
 end
