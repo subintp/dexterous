@@ -10,8 +10,18 @@
         .pointer
         %h1{'data-bind' => "text: title"}
         %div
-          %p{'data-bind' => 'text: description'}
-
+          %p.description{'data-bind' => 'text: description'}
+        .timestamp-container
+          .created-timestamp.timestamp-inner
+            %label
+              %i.fa.fa-clock-o
+              Created:
+            %div{'data-bind' => 'timeago: created_at'}
+          .updated-timestap.timestamp-inner
+            %label
+              %i.fa.fa-clock-o
+              Last updated:
+            %div{'data-bind' => 'timeago: updated_at'}
     %ul#pseudo-milestone-list
       %li{'data-bind' => 'with: newMilestone'}
         .thumb
@@ -19,7 +29,7 @@
         %h1{'data-bind' => 'inlineEditable: title'}
           .default
             New milestone (Click to edit)
-        %div{'data-bind' => 'inlineBoxEditable: description'}
+        %div.description{'data-bind' => 'inlineBoxEditable: description'}
           .default
             Description of this milestone goes here (Click to edit)
         .controls

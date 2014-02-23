@@ -1,5 +1,7 @@
 #= require ../application
 #= require knockout
+#= require jquery.timeago
+
 #= require_tree ../bindings
 #= require_tree ../view_models
 #= require_tree ../endpoints
