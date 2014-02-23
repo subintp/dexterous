@@ -67,7 +67,7 @@ class TrackAuthorizer < Authority::Authorizer
         user: user,
         can_contribute: true
       ).length > 0
-    when 'forbidden'
+    when 'private'
       resource.owner_id == user.id
     end
   end

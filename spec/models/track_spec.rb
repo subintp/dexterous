@@ -153,7 +153,7 @@ describe Track do
 
   context "with forbidden contributability" do
     before :each do
-      @track = build :track, contributability: 'forbidden'
+      @track = build :track, contributability: 'private'
     end
 
     it "doesn't accept contribution from arbitrary signed in user" do
