@@ -1,25 +1,39 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
+
+# Ruby Libraries
+# ==============
 gem 'mysql2'
-gem 'stylus'
-gem 'uglifier', '>= 1.3.0'
-gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem 'authority'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
+# Servers and deployment
+# ======================
+gem 'unicorn-rails'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-gem 'authority'
-gem 'unicorn-rails'
-gem 'haml-rails'
+# Meta languages
+# ==============
 gem 'coffee-rails'
+gem 'haml-rails'
+gem 'stylus'
 
+# Javascript libraries
+# ====================
+gem 'knockoutjs-rails'
+gem 'lodash-rails'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+
+# Asset post-processing and packaging
+# ===================================
+gem 'uglifier', '>= 1.3.0'
+
+# Testing and mocking libraries
+# =============================
 group :development , :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
@@ -42,6 +56,8 @@ group :development , :test do
   gem 'debugger'
 end
 
+# Auxiliary utilities to ease development
+# =======================================
 group :development do
   gem 'guard-livereload', require: false
   gem 'rack-livereload'

@@ -148,6 +148,8 @@ GEM
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     gherkin (2.12.2)
       multi_json (~> 1.3)
@@ -179,11 +181,15 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
+    knockoutjs-rails (3.0.0)
+      railties (>= 3.1, < 4.1)
     listen (2.5.0)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    lodash-rails (2.4.1)
+      railties (>= 3.1)
     lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -227,17 +233,12 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
-    rdoc (4.1.1)
-      json (~> 1.4)
     rspec (3.0.0.beta2)
       rspec-core (= 3.0.0.beta2)
       rspec-expectations (= 3.0.0.beta2)
       rspec-mocks (= 3.0.0.beta2)
     rspec-collection_matchers (0.0.3)
       rspec-expectations (>= 2.99.0.beta1)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
     slop (3.4.7)
@@ -289,11 +290,14 @@ DEPENDENCIES
   debugger
   devise
   factory_girl_rails
+  font-awesome-rails
   guard-livereload
   guard-rspec!
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
+  knockoutjs-rails
+  lodash-rails
   mysql2
   rack-livereload
   rails (= 4.0.2)
@@ -303,7 +307,6 @@ DEPENDENCIES
   rspec-mocks!
   rspec-rails!
   rspec-support!
-  sdoc
   shoulda-matchers
   stylus
   uglifier (>= 1.3.0)
