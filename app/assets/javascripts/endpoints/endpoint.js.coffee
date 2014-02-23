@@ -25,4 +25,3 @@ class dx.Endpoint
             type: 'delete'
             url: "#{@baseUrl}/#{id}"
     constructor: (@baseUrl)->
-
