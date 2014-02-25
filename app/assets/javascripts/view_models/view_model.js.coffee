@@ -1,5 +1,4 @@
 class dx.ViewModel
-    serialize: ->
 
     constructor: (params)->
         params ?= {}
@@ -12,3 +11,20 @@ class dx.ViewModel
 
         _.each @constructor.observableArrays, (prop)=>
             @[prop] = ko.observableArray params[prop]
+
+    update: (params)-> @_update params, false
+    patch: (params)-> @_update params, true
+
+    _update: (params, patch)->
+        params ?= {}
+        c = @constructor
+
+        for prop in c.staticProps
+            unless patch and _.isEmpty params[prop]
+                @[prop] = params[prop] || null
+
+        for arr in [c.observables, c.observableArrays]
+            for prop in arr
+                unless patch and _.isEmpty params[prop]
+                    @[prop] params[prop]
+        

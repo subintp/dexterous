@@ -1,4 +1,30 @@
 #banner
+  #login-links
+    - if user_signed_in?
+      = link_to 'Dashboard', action: :dashboard, id: 'dashboard-thumb'
+      = link_to 'Logout', destroy_user_session_path, id: 'logout-thumb'
+    - else
+      = link_to 'Login', new_user_session_path, id: 'login-thumb'
+      = link_to 'Register', new_user_registration_path, id: 'register-thumb'
+  - unless user_signed_in?
+    #login-popup.popup-form
+      = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
+        %fieldset
+          = f.label :email
+          = f.email_field :email
+          = f.label :password
+          = f.password_field :password
+          = f.submit "Login", class: 'pure-button pure-button-primary'
+    #register-popup.popup-form
+      = form_for resource, as: resource_name, url: registration_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
+        %fieldset
+          = f.label :email
+          = f.email_field :email
+          = f.label :password
+          = f.password_field :password
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+          = f.submit "Register", class: 'pure-button pure-button-primary'
   .inner-1
     .inner-2
       .inner-3
@@ -14,17 +40,6 @@
   Organize resources
   Invite Collaborators
   Get stuff done.
-%ul#nav-main
-  %li
-    - if user_signed_in?
-      = link_to 'Account', edit_user_registration_path
-      = link_to 'Logout', destroy_user_session_path, :method => :delete
-    - else
-      = link_to 'Login', new_user_session_path
-      = link_to 'Register', new_user_registration_path
 
-  %li
-    - if user_signed_in?
-      = link_to 'Dashboard', action: :dashboard
-    - else
-      %a{href: '#'} Learn More
+= javascript_include_tag "home"
+
