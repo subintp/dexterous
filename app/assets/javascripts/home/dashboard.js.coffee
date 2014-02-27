@@ -1,4 +1,4 @@
-#= require ./application
+#= require ../application
 
 $ ->
     h = $('body').height() - $('#dashboard>header').height() - $('#dashboard>footer').height()

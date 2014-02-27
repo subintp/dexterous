@@ -1,3 +1,7 @@
+- content_for :head do
+  = stylesheet_link_tag 'home/dashboard', media: :all
+  = javascript_include_tag "home/dashboard"
+
 - if @tracks.length == 0
   = render partial: 'introduction'
 - else
@@ -12,6 +16,3 @@
             None
           %footer
             = link_to 'View Track', controller: 'tracks', action: 'show', id: track.id
-
-= javascript_include_tag "dashboard"
-          
