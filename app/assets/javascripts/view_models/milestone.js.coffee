@@ -17,3 +17,12 @@ class dx.Milestone extends dx.ViewModel
 
     toggleResources: ->
         @resourcesVisible ! @resourcesVisible()
+
+    initResourceCreation: ->
+        $('<div>')
+            .avgrund
+                width: 380
+                height: 280
+                showClose: true
+                template: $ '#milestone-form-wrapper'
+            .click()

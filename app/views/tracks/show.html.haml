@@ -11,23 +11,30 @@
       %li
         .thumb
         .pointer
-        .milestone-controls.rfloat
-          // ko: if: editable
-          %a.edit-thumb
-            %i.fa.fa-edit
-          // /ko
-          // ko: if: deletable
-          %a.del-thumb
-            %i.fa.fa-trash-o
-          // /ko
         %h1{'data-bind' => "text: title"}
         %div
           %p.description{'data-bind' => 'text: description'}
         .milestone-footer
+          .milestone-controls.lfloat
+            // ko: if: editable
+            %a.edit-thumb
+              %i.fa.fa-edit
+            // /ko
+            // ko: if: deletable
+            %a.del-thumb
+              %i.fa.fa-trash-o
+            // /ko
+
           .resource-thumb
-            %a.resource-num{'data-bind' => 'text: resources.length + " resources"'}
-            %a.resource-create-thumb
+            %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResources'}
+            %a.resource-create-thumb{'data-bind' => 'click: initResourceCreation'}
               %i.fa.fa-plus-circle
+          .resource-list-wrapper{'data-bind' => 'if: resourcesVisible()'}
+            .resource-list-inner
+              .arrow
+              %ul.resource-list{'data-bind' => 'if: resources.length > 0'}
+              .zilch-msg
+                No resources yet. Add something
         .side-container
           .created-timestamp.timestamp-container
             %label
@@ -61,3 +68,14 @@
   - @track.learning_resources.each do |l|
     != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
   ko.applyBindings(app.viewModels);
+
+.hidden
+  #milestone-form-wrapper
+    %form.pure-form-stacked.pure-form
+      %fieldset
+        %label Title
+        %input{type: 'text'}
+        %label Url
+        %input{type: 'text'}
+        %label Description
+        %textarea

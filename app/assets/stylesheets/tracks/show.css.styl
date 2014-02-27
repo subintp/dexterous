@@ -131,10 +131,13 @@
       background #FFFFFF
       .milestone-controls
         display none
+        color #A8A8A8
+      &:hover .milestone-controls
+        display block
       .description
         padding 10px 0
         margin 0
-
+      
       .thumb
         background url('/assets/milestone_circle.png') center center no-repeat
         width 21px
@@ -195,3 +198,21 @@
   padding-top 10px
   border-top #FAFAFA 1px solid
   text-align right
+
+.resource-list-inner
+  border-top 1px solid #E6E6E6
+  background #FAFAFA
+  margin-top 10px
+  padding 5px
+  font-size 0.8em
+  position relative
+
+  .arrow
+    width 0
+    height 0
+    border 5px solid transparent
+    position absolute
+    border-bottom 5px solid silver
+    position absolute
+    right 20px
+    top -10px
