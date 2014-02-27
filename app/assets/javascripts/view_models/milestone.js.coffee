@@ -5,8 +5,15 @@
 
 class dx.Milestone extends dx.ViewModel
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
-    @observables: ['title', 'description', 'updated_at']
+    @observables: ['title', 'description', 'updated_at', 'resourcesVisible']
+    @observableArrays: ['resources']
     @endpoint: 'milestones'
 
     _.extend @prototype, dx.mixin.persistable, dx.mixin.serializable
-    
+
+    constructor: ->
+        super
+        @resourcesVisible false
+
+    toggleResources: ->
+        @resourcesVisible ! @resourcesVisible()

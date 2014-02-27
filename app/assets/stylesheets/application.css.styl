@@ -1,4 +1,7 @@
 /*
+ * Generic dependencies
+ * ====================
+ *
  *= require pure
  *= require font-awesome
  *= require_self
@@ -8,83 +11,8 @@ body
   font-family: 'Raleway', sans-serif
   font-size 100%
   background #D9D9D9
- html, body
-   min-height 100%
-   min-width 100%
-   margin 0
-   padding 0
-#login-links
-  float right
-  margin-top 20px
-  margin-right 20px
-  a
-    color: #FFDF0D
-    font-weight: 400
-    font-size: 1.3em
-    text-decoration: none
-    padding: 5px 10px
-#banner
-  background #333
-  min-height 100%
-  border-top 4px solid #FFDF0D 
-  background -moz-radial-gradient(center, ellipse cover, #333 0%, #000 100%)
-  background -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#333), color-stop(100%,#000))
-  background -webkit-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
-  background -o-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
-  background -ms-radial-gradient(center, ellipse cover, #333 0%,#000 100%)
-  background radial-gradient(center, ellipse cover, #333 0%,#000 100%)
-  border-bottom 3px solid #C8C8C8
-
-  .inner-1
-    background url('/assets/stripes.png')
-
-    .inner-2
-      background url('/assets/noise.png')
-
-      .inner-3
-        padding 180px 0
-        width 80%
-        margin 0 auto
-        h1
-          font-size 4.5em
-          margin 0
-          color white
-          font-weight 400
-          padding-bottom 20px
-        h2
-          font-size 2.1em
-          color #E6E6E6
-          font-weight 200
-  .popup-form
-    position absolute
-    top 60px
-    right 20px
-    padding 10px
-    background #D9D9D9
-    border-top 1px solid #FFDF0D
-    border-bottom 1px solid #FFDF0D
-    display none
-#nav-main
-  float right
-  padding-top 1em
-  list-style-type none
-  li
-    float right
-    border-radius 1em
-    margin 0 0.5em
-    background: #7cb4df;
-    border-color: #5d91b8;
-    box-shadow: inset #a8d3dd 0 1px 0;
-    a
-      text-decoration none
-      line-height 1.6em
-      font-size 1em
-      display inline-block
-      padding 0 1em
-      border-left 2px solid #A8D3DD
-      color white
-    a:first-child
-      border-left none
+a
+  cursor pointer
 
 .rfloat
   float right

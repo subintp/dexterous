@@ -1,0 +1,73 @@
+//= require ./pure_customizations
+
+@import './mixins/colors'
+
+hdr-h = 40px
+ftr-h = 30px
+
+html, body
+  height 100%
+  width 100%
+  margin 0
+  padding 0
+  overflow-x hidden
+
+a
+  text-decoration none
+  cursor pointer
+
+#dashboard
+  overflow hidden
+  font-family: 'Raleway', sans-serif
+  background #D9D9D9
+
+  header
+    height hdr-h
+    background #E6E6E6
+    border-bottom 2px solid #C8C8C8
+    overflow hidden
+    h1
+      a
+        color col-red-prime
+      line-height hdr-h
+      padding-left 20px
+      font-weight bold
+      margin 0
+      font-size 1em
+    #search-form
+      float left
+      font-size 0.7em
+      height (hdr-h - 20px)
+      line-height (hdr-h - 20px)
+      margin 10px
+      overflow hidden
+      border 1px solid #C8C8C8
+      border-radius ((hdr-h - 20px)/2)
+      padding 0 ((hdr-h - 20px)/2)
+    .prime
+      background #C8C8C8
+      border-top 2px solid #545454
+      color #333
+      display inline-block
+      font-size 0.8em
+      height hdr-h
+      line-height hdr-h
+      padding 0 10px
+      margin-right 20px
+  .body
+    overflow auto
+  footer
+    height ftr-h
+    line-height ftr-h
+    font-size 0.8em
+    text-align center
+    background #C8C8C8
+
+  #new-track-form
+    position absolute
+    top hdr-h
+    right 10px
+    background white
+    border 1px solid #C8C8C8
+    border bottom 2px solid #C8C8C8
+    padding 10px

@@ -1,3 +1,6 @@
+- content_for :head do
+  = stylesheet_link_tag 'tracks/show', media: "all"
+
 %h1#track-wrapper
   %span#track-title-label Track: 
   %span#track-title= @track.title
@@ -20,13 +23,18 @@
         %h1{'data-bind' => "text: title"}
         %div
           %p.description{'data-bind' => 'text: description'}
-        .timestamp-container
-          .created-timestamp.timestamp-inner
+        .milestone-footer
+          .resource-thumb
+            %a.resource-num{'data-bind' => 'text: resources.length + " resources"'}
+            %a.resource-create-thumb
+              %i.fa.fa-plus-circle
+        .side-container
+          .created-timestamp.timestamp-container
             %label
               %i.fa.fa-clock-o
               Created:
             %div{'data-bind' => 'timeago: created_at'}
-          .updated-timestap.timestamp-inner{'data-bind' => 'if: updated_at() != created_at '}
+          .updated-timestap.timestamp-container{'data-bind' => 'if: updated_at() != created_at '}
             %label
               %i.fa.fa-clock-o
               Last updated:

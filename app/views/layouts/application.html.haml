@@ -2,10 +2,9 @@
 %html
   %head
     %title Dexterous
-    = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-    = yield :head if content_for? :head
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway:400,100", media: 'all'
+    = yield :head if content_for? :head
   %body
     .notice= notice
     .alert= alert

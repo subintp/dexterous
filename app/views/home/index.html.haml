@@ -1,3 +1,6 @@
+- content_for :head do
+  = stylesheet_link_tag 'home/index', media: :all
+  = javascript_include_tag "home/index"
 #banner
   #login-links
     - if user_signed_in?
@@ -8,6 +11,7 @@
       = link_to 'Register', new_user_registration_path, id: 'register-thumb'
   - unless user_signed_in?
     #login-popup.popup-form
+      .arrow
       = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
         %fieldset
           = f.label :email
@@ -16,6 +20,7 @@
           = f.password_field :password
           = f.submit "Login", class: 'pure-button pure-button-primary'
     #register-popup.popup-form
+      .arrow
       = form_for resource, as: resource_name, url: registration_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
         %fieldset
           = f.label :email
@@ -35,11 +40,15 @@
           for
           %br
           motivated self-learners
+      %a#push-down-thumb
+        .icon
+
 %section#descr-promo
-  Schedule your time,
-  Organize resources
-  Invite Collaborators
-  Get stuff done.
-
-= javascript_include_tag "home"
-
+  .row
+    Schedule your time,
+  .row
+    Organize resources
+  .row
+    Invite Collaborators
+  .row
+    Get stuff done.
