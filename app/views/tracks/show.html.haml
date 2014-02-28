@@ -3,69 +3,71 @@
 
 %h1#track-wrapper
   %span#track-title-label Track: 
-  %span#track-title= @track.title
+  %span#track-title= @model.title
 #timeline
   #spine
   #milestones
     %ul#milestone-list{'data-bind' => "foreach: milestones"}
       %li
-        .thumb
-        .pointer
-        %h1{'data-bind' => "text: title"}
-        %div
-          %p.description{'data-bind' => 'text: description'}
-        .milestone-footer
-          .milestone-controls.lfloat
-            // ko: if: editable
-            %a.edit-thumb
-              %i.fa.fa-edit
-            // /ko
-            // ko: if: deletable
-            %a.del-thumb
-              %i.fa.fa-trash-o
-            // /ko
-
-          .resource-thumb
-            %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResources'}
-            %a.resource-create-thumb{'data-bind' => 'click: initResourceCreation'}
-              %i.fa.fa-plus-circle
-          .resource-list-wrapper{'data-bind' => 'if: resourcesVisible()'}
-            .resource-list-inner
-              .arrow
-              %ul.resource-list{'data-bind' => 'if: resources.length > 0'}
-              .zilch-msg
-                No resources yet. Add something
-        .side-container
-          .created-timestamp.timestamp-container
-            %label
-              %i.fa.fa-clock-o
-              Created:
-            %div{'data-bind' => 'timeago: created_at'}
-          .updated-timestap.timestamp-container{'data-bind' => 'if: updated_at() != created_at '}
-            %label
-              %i.fa.fa-clock-o
-              Last updated:
-            %div{'data-bind' => 'timeago: updated_at()'}
-    %ul#pseudo-milestone-list
-      - if @track.contributable_by? current_user
-        %li{'data-bind' => 'with: newMilestone'}
+        .milestone-inner
           .thumb
           .pointer
-          %h1{'data-bind' => 'inlineEditable: title'}
-            .default
-              New milestone (Click to edit)
-          %div.description{'data-bind' => 'inlineBoxEditable: description'}
-            .default
-              Description of this milestone goes here (Click to edit)
-          .controls
-            %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
+          %h1{'data-bind' => "text: title"}
+          %div
+            %p.description{'data-bind' => 'text: description'}
+          .milestone-footer
+            .milestone-controls.lfloat
+              // ko: if: editable
+              %a.edit-thumb
+                %i.fa.fa-edit
+              // /ko
+              // ko: if: deletable
+              %a.del-thumb
+                %i.fa.fa-trash-o
+              // /ko
+           
+            .resource-thumb
+              %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResources'}
+              %a.resource-create-thumb{'data-bind' => 'click: initResourceCreation'}
+                %i.fa.fa-plus-circle
+            .resource-list-wrapper{'data-bind' => 'if: resourcesVisible()'}
+              .resource-list-inner
+                .arrow
+                %ul.resource-list{'data-bind' => 'if: resources.length > 0'}
+                .zilch-msg
+                  No resources yet. Add something
+          .side-container
+            .created-timestamp.timestamp-container
+              %label
+                %i.fa.fa-clock-o
+                Created:
+              %div{'data-bind' => 'timeago: created_at'}
+            .updated-timestap.timestamp-container{'data-bind' => 'if: updated_at() != created_at '}
+              %label
+                %i.fa.fa-clock-o
+                Last updated:
+              %div{'data-bind' => 'timeago: updated_at()'}
+    %ul#pseudo-milestone-list
+      - if @model.contributable_by? current_user
+        %li{'data-bind' => 'with: newMilestone'}
+          .milestone-inner
+            .thumb
+            .pointer
+            %h1{'data-bind' => 'inlineEditable: title'}
+              .default
+                New milestone (Click to edit)
+            %div.description{'data-bind' => 'inlineBoxEditable: description'}
+              .default
+                Description of this milestone goes here (Click to edit)
+            .controls
+              %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
 
 = javascript_include_tag "tracks/show"
 %script
-  != "app.viewModels.track = new dx.Track(#{@track.to_json});"
-  - @track.milestones_for(current_user).each do |m|
+  != "app.viewModels.track = new dx.Track(#{@model.to_json});"
+  - @model.milestones_for(current_user).each do |m|
     != "app.viewModels.milestones.push(new dx.Milestone(#{m.to_json}));"
-  - @track.learning_resources.each do |l|
+  - @model.learning_resources.each do |l|
     != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
   ko.applyBindings(app.viewModels);
 

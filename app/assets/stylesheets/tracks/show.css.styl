@@ -124,10 +124,7 @@
     padding 0
     li
       margin 0 200px 10px (100px+30px)
-      border 1px solid #E6E6E6
-      border-left #A8A8A8 4px solid
-      padding 10px
-      position relative
+      border-left #c8c8c8 4px solid
       background #FFFFFF
       .milestone-controls
         display none
@@ -149,7 +146,7 @@
         height 0
         width 0
         border 6px solid transparent
-        border-right 6px solid #A8A8A8
+        border-right 6px solid #C8C8C8
         position absolute
         top 15px
         left -16px
@@ -169,6 +166,11 @@
         box-shadow none
         border 1px dotted silver
         background #FFFFCC
+.milestone-inner
+  padding 10px
+  position relative
+  for dir in top right bottom
+    border-{dir} #E6E6E6 1px solid
 .side-container
   position absolute
   right -200px
@@ -194,6 +196,12 @@
     border-right 1px solid #333333
     margin-right 5px
     line-height 20px
+.resource-create-thumb:hover i
+  color #CF0018
+.resource-thumb:hover
+  background #FEE0A2    
+.resource-num:hover
+  color #CF0018
 .milestone-footer
   padding-top 10px
   border-top #FAFAFA 1px solid
