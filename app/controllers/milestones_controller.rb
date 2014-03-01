@@ -1,13 +1,11 @@
-class MilestonesController < ApplicationController
-  before_filter :authenticate_user!
+class MilestonesController < ResourceController
 
-  def create
-    @milestone = Milestone.new params.permit :title, :description, :aexpected_duration, :track_id
-    @milestone.owner = current_user
-    @milestone.save!
-    render json: @milestone
-  rescue
-    render json: @milestone.errors.full_messages
+  private
+
+  def extract_params
+      params
+          .require(:milestone)
+          .permit(:title, :description, :expected_duration, :track_id)
   end
 
 end

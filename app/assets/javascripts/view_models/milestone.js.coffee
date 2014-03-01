@@ -5,6 +5,7 @@
 #= require ./mixins/serializable
 
 class dx.Milestone extends dx.ViewModel
+    @name: 'milestone'
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
     @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy']
     @observableArrays: ['resources']
@@ -28,5 +29,7 @@ class dx.Milestone extends dx.ViewModel
         @beingEdited true
 
     startDelete: ->
-        alert 'Are you sure?'
-        @isBusy true
+        if confirm 'Are you sure?'
+            @isBusy true
+            @destroy()
+

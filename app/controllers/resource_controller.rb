@@ -51,11 +51,11 @@ class ResourceController < ApplicationController
   end
 
   def model_class
-    self.class.name[0..-11].constantize
+    self.class.name[0..-11].singularize.constantize
   end
   
   def load_resource
-    @model = self.class.name[0..-11].constantize.find params[:id]
+    @model = model_class.find params[:id]
     head :not_found if @model.nil?
   end
 
