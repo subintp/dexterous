@@ -6,7 +6,7 @@
 
 class dx.Milestone extends dx.ViewModel
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
-    @observables: ['title', 'description', 'updated_at', 'resourcesTab']
+    @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy']
     @observableArrays: ['resources']
     @endpoint: 'milestones'
 
@@ -17,3 +17,16 @@ class dx.Milestone extends dx.ViewModel
 
     toggleNewResourceForm: ->
         @resourcesTab if @resourcesTab() == 'create' then null else 'create'
+
+    closeDropdown: ->
+        @resourcesTab null
+
+    cancelEdit: ->
+        @beingEdited false
+
+    startEdit: ->
+        @beingEdited true
+
+    startDelete: ->
+        alert 'Are you sure?'
+        @isBusy true

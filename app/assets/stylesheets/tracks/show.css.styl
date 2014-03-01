@@ -1,5 +1,4 @@
 /*
- *= require avgrund
  *= require ../application
  */
  
@@ -214,7 +213,18 @@
     position absolute
     right 20px
     top -15px
-    
+  h2
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 1.9em;
+    font-weight: 400;
+    text-align: left;
+    padding: 0 10px;
+    i
+      margin-top 4px
+
+.inline-form
   input[type='submit']
     background   #E6E6E6
     color #000
@@ -225,26 +235,6 @@
   input, textarea
     box-shadow none !important
 
-  h2
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
-    line-height: 1.9em;
-    font-weight: 400;
-    text-align: left;
-    padding-left: 10px;
-.avgrund-popin
-  border-top 4px solid #FFDF0D
-  header
-    h1
-      font-size: 1em;
-      font-weight: bold;
-      text-transform: uppercase;
-      border-bottom: 1px solid silver;
-      padding-bottom: 5px;
-      margin-top: 0;
-
-.resource-form-wrapper
   .row-title, .row-url, .row-description
     background white
   .row
@@ -276,3 +266,13 @@
     padding-top 4px
   input[type='submit']
     margin-right 10px
+.zilch-msg
+  padding 10px
+  background white
+  text-align center
+  a
+    font-weight 800
+  a:hover
+    border-bottom 1px silver dotted
+  .smiley
+    font-size 2em

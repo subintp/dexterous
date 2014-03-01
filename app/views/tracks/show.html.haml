@@ -12,17 +12,29 @@
                 .milestone-inner
                     .thumb
                     .pointer
+                    / ko if: isBusy
+                    .overlay
+                        .loader
+                    / /ko
+
+                    / ko if: beingEdited
+                    .milestone-form-wrapper{'data-bind' => 'template: { name: "milestone-form", data: $data} '}
+                    / /ko
+
+                    / ko ifnot: beingEdited
                     %h1{'data-bind' => "text: title"}
                     %div
                         %p.description{'data-bind' => 'text: description'}
                     .milestone-footer
                         .milestone-controls.lfloat
+
                             / ko if:editable
-                            %a.edit-thumb
+                            %a.edit-thumb{'data-bind' => 'click: startEdit'}
                                 %i.fa.fa-edit
                             / /ko
+
                             / ko if:deletable
-                            %a.del-thumb
+                            %a.del-thumb{'data-bind' => 'click: startDelete'}
                                 %i.fa.fa-trash-o
                             / /ko
 
@@ -36,19 +48,28 @@
                             .arrow
 
                             / ko if:resourcesTab() === 'list'
+                            %h2
+                                %a{'data-bind' => 'click: closeDropdown'}
+                                    %i.rfloat.fa.fa-times-circle
+                                Learning resources to help you complete this milestone :
+
                             .resource-list-wrapper
                                 %ul.resource-list{'data-bind' => 'if:resources.length > 0'}
                                 .zilch-msg
-                                    No resources yet. Add something
+                                    .smiley :(
+                                    No resources yet.
+                                    %a{'data-bind' => 'click: toggleNewResourceForm'} Add something
                             / /ko
 
                             / ko if:resourcesTab() === 'create'
                             %h2
+                                %a{'data-bind' => "click: closeDropdown"}
+                                    %i.rfloat.fa.fa-times-circle
                                 Add a new Resource:
-                            .resource-form-wrapper{'data-bind' => 'template:{ name: "milestone-form-wrapper", data: new dx.LearningResource }' }
+                            .resource-form-wrapper{'data-bind' => 'template:{ name: "lr-form", data: new dx.LearningResource }' }
                             / /ko
-
                         / /ko
+                    / /ko
                     .side-container
                         .created-timestamp.timestamp-container
                             %label
@@ -77,8 +98,8 @@
                             %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
 
 
-%script{type: 'text/html', id: 'milestone-form-wrapper'}
-    %form.pure-form-aligned.pure-form
+%script{type: 'text/html', id: 'lr-form'}
+    %form.pure-form.inline-form
         .row.row-title
             %label Title
             %input{type: 'text'}
@@ -90,6 +111,17 @@
             %textarea
         .row.row-submit
             %input{type: 'submit', value: 'Submit'}
+
+%script{type: 'text/html', id: 'milestone-form'}
+    %form.inline-form.pure-form
+        .row.row-title
+            %label Title
+            %input{type: 'text'}
+        .row.row-description
+            %label Description
+            %textarea
+        .row.row-submit
+            %input{type: 'submit', value: 'Save'}
 
 = javascript_include_tag "tracks/show"
 
