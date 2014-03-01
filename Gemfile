@@ -23,7 +23,6 @@ gem 'stylus'
 
 # Javascript libraries
 # ====================
-gem 'knockoutjs-rails'
 gem 'lodash-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'

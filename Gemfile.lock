@@ -181,8 +181,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
-    knockoutjs-rails (3.0.0)
-      railties (>= 3.1, < 4.1)
     listen (2.5.0)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -298,7 +296,6 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
-  knockoutjs-rails
   lodash-rails
   mysql2
   quiet_assets
