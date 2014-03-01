@@ -3,7 +3,7 @@ dx.mixin.persistable =
         app.endpoints[@constructor.endpoint]
     save: ->
         obj = {}
-        obj[@constructor.name.toLowerCase()] = @toJSON()
+        obj[_.underscored @constructor.name] = @toJSON()
         if @id?
             @endpoint().update @id, obj
         else

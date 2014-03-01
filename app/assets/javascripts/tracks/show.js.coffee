@@ -29,3 +29,4 @@
 
 @app.endpoints =
     milestones: new dx.Endpoint('/milestones')
+    learning_resources: new dx.Endpoint('/learning_resources')

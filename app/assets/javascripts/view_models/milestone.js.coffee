@@ -5,13 +5,17 @@
 #= require ./mixins/serializable
 
 class dx.Milestone extends dx.ViewModel
-    @name: 'milestone'
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
-    @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy']
+    @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy', 'freshResource']
     @observableArrays: ['resources']
     @endpoint: 'milestones'
+    @ignored: ['beingEdited', 'isBusy', 'freshResource', 'resources', 'editable', 'deletable']
 
     _.extend @prototype, dx.mixin.persistable, dx.mixin.serializable
+
+    constructor: ->
+        super
+        @freshResource new dx.LearningResource track_id: @track_id
 
     toggleResourceList: ->
         @resourcesTab if @resourcesTab() == 'list' then null else 'list'
@@ -32,4 +36,3 @@ class dx.Milestone extends dx.ViewModel
         if confirm 'Are you sure?'
             @isBusy true
             @destroy()
-

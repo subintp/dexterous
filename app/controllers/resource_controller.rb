@@ -7,6 +7,7 @@ class ResourceController < ApplicationController
     if model_class.creatable_by? current_user
       @model = model_class.new extract_params
       @model.save!
+      render json: @model
     else
       head :not_acceptable
     end

@@ -66,7 +66,7 @@
                                 %a{'data-bind' => "click: closeDropdown"}
                                     %i.rfloat.fa.fa-times-circle
                                 Add a new Resource:
-                            .resource-form-wrapper{'data-bind' => 'template:{ name: "lr-form", data: new dx.LearningResource }' }
+                            .resource-form-wrapper{'data-bind' => 'template:{ name: "lr-form", data: freshResource() }' }
                             / /ko
                         / /ko
                     / /ko
@@ -99,16 +99,16 @@
 
 
 %script{type: 'text/html', id: 'lr-form'}
-    %form.pure-form.inline-form
+    %form.pure-form.inline-form{'data-bind' => 'submit: save'}
         .row.row-title
             %label Title
-            %input{type: 'text'}
+            %input{type: 'text', 'data-bind' => 'value: title'}
         .row.row-url
             %label Url
-            %input{type: 'text'}
+            %input{type: 'text', 'data-bind' => 'value: url'}
         .row.row-description
             %label Description
-            %textarea
+            %textarea{'data-bind' => 'value: description'}
         .row.row-submit
             %input{type: 'submit', value: 'Submit'}
 
