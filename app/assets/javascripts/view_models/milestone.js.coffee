@@ -1,4 +1,5 @@
 #= require ./view_model
+#= require ./learning_resource
 #= require ../endpoints/endpoint
 #= require ./mixins/persistable
 #= require ./mixins/serializable
@@ -19,10 +20,15 @@ class dx.Milestone extends dx.ViewModel
         @resourcesVisible ! @resourcesVisible()
 
     initResourceCreation: ->
+        learningResource = new dx.LearningResource
+        learningResource.title 'hello world'
+        learningResource.url 'hello.com'
+
         $('<div>')
             .avgrund
-                width: 380
+                width: 400
                 height: 280
                 showClose: true
                 template: $ '#milestone-form-wrapper'
             .click()
+        ko.applyBindings learningResource, $('.avgrund-popin')[0]
