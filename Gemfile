@@ -45,11 +45,7 @@ group :development , :test do
       branch: 'master'
   end
   gem 'rspec', '~> 3.0.0.beta2'
-  gem 'guard-rspec',
-    github: '907th/guard-rspec',
-    branch: 'fix_249'
-
-  # gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'debugger'
