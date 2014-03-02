@@ -6,7 +6,7 @@
 
 class dx.Milestone extends dx.ViewModel
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
-    @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy', 'freshResource']
+    @observables: ['title', 'description', 'updated_at', 'expected_duration', 'resourcesTab', 'beingEdited', 'isBusy', 'freshResource']
     @endpoint: 'milestones'
     @ignored: ['beingEdited', 'isBusy', 'freshResource', 'resources', 'editable', 'deletable']
 

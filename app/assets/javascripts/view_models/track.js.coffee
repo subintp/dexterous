@@ -6,8 +6,7 @@ class dx.Track extends dx.ViewModel
     @observables: ['name', 'description', 'freshMilestone']
 
     genFreshMilestone: ->
-        id = @id
-        fm = new dx.Milestone track_id: id
+        fm = new dx.Milestone track_id: @id
         save = fm.save
         fm.save = ->
             save.apply(this, arguments)
