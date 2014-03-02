@@ -4,46 +4,6 @@
  
 @import '../mixins/dashboard'
 
-#track-creation-wizard
-  width  80%
-  margin 100px auto
-  background white
-  border-top col-orange-prime 4px solid
-  .wizard-title
-    h1
-      text-align center
-      line-height 2.5em
-      margin 0
-      padding 0
-      color col-red-prime
-  .wizard-body
-    padding 10px
-    text-align center
-    label
-      font-size 2em
-      display block
-      margin-top 30px
-    .select-wrapper
-      margin 10px auto
-    input[type='text'], input[type='password'], textarea
-      margin 20px 0
-      border 1px dashed #C8C8C8
-      width 80%
-      box-shadow none
-      background transparent
-      font-size 1.5em
-      line-height 1.5em
-      text-align center
-      outline 0
-      border-bottom 1px solid #C8C8C8
-      &:focus
-        border-bottom 1px solid col-red-prime
-  .wizard-footer
-    padding-bottom 10px
-    text-align center
-    .pure-button-secondary
-      margin-right 10px
-
 .select-wrapper
   padding: 0;
   margin: 0;
@@ -107,6 +67,9 @@
   margin 0 auto
   position relative
   background #FAFAFA
+  font-size 0.8em
+  h1, h2, h3, h4, h5, h6
+    font-size 1.3em
 #spine
   width 0
   border-right 3px solid #E3E3E3
@@ -153,7 +116,6 @@
         padding 0
         margin 0
         border-bottom 1px solid #E6E6E6
-        font-size 16px
         padding-bottom 10px
 .milestone-inner
   padding 10px
@@ -163,7 +125,6 @@
 .side-container
   position absolute
   right -200px
-  font-size 0.7em
   top 0
   margin 0
   padding 0
@@ -176,7 +137,6 @@
 .resource-thumb
   background #E6E6E6
   border-radius 15px
-  font-size 0.8em
   color #333333
   padding 0 12px
   display inline-block
@@ -200,7 +160,6 @@
   border 1px solid #E6E6E6
   background #FAFAFA
   margin-top 10px
-  font-size 0.8em
   padding 0
   position relative
 
@@ -214,7 +173,6 @@
     right 20px
     top -15px
   h2
-    font-size: 1em;
     margin: 0;
     padding: 0;
     line-height: 1.9em;
@@ -257,10 +215,16 @@
       padding-left 10px
       text-align left
       line-height 30px
+    input[type='text']
+      margin-left: 5px;
     input[type='text'], textarea
       width 90%
       border none
       background transparent
+      border-radius 0
+      font-weight: 100;
+      line-height: 30px;
+      padding: 0 0 0 10px;
   .row-description
     label
       display block
