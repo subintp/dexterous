@@ -12,10 +12,24 @@ class dx.Milestone extends dx.ViewModel
 
     _.extend @prototype, dx.mixin.persistable, dx.mixin.serializable
 
+    genFreshResource: ->
+        fr = new dx.LearningResource track_id: @track_id, milestone_id: @id
+        save = fr.save
+        _this = this
+        fr.save = ->
+            _this.isBusy true
+            save.apply(this, arguments)
+                .done (data)->
+                    app.viewModels.learningResources.push new dx.LearningResource data
+                    _this.isBusy false
+                    _this.resourcesTab 'list'
+                    fr.purge
+        @freshResource fr
+
     constructor: ->
         super
         @_pristine = {}
-        @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
+        @genFreshResource()
         @learningResources = ko.computed =>
             _.filter app.viewModels.learningResources(), (res)=>
                 res.milestone_id() == @id
