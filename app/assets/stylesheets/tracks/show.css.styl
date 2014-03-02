@@ -117,11 +117,11 @@
 #milestones
   margin 20px 0
   padding 10px 0
-  ul
+  & > ul
     list-style-type none
     margin 0
     padding 0
-    li
+    & > li
       margin 0 200px 10px (100px+30px)
       border-left #c8c8c8 4px solid
       background #FFFFFF
@@ -291,3 +291,28 @@
   padding 0 10px
   margin 0
   color white
+
+.resource-list-wrapper
+  background white
+  padding 5px
+
+.resource-list
+  margin 0
+  list-style-type none
+  padding 0
+  text-align left
+  li
+    display block
+    border-bottom 1px dashed #E6E6E6
+    padding 10px 0 0 0
+    p, a
+      margin 0
+      margin 5px 0
+    a
+      color gray
+    a:hover
+      border-bottom 1px dotted gray
+  li:last-child
+    border-bottom none
+
+

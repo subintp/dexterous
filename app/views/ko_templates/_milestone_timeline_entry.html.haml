@@ -43,13 +43,19 @@
 
         .resource-list-wrapper
             / ko if: learningResources().length > 0
-            %ul.resource-list{'data-bind' => 'each: learningResources()'}
-                %li{'data-bind' => 'text: title'}
+            %ul.resource-list{'data-bind' => 'foreach: learningResources()'}
+                %li
+                    %a{'data-bind' => 'attr: { href: url }, text: title'}
+                    %p{'data-bind' => 'text: description'}
             / /ko
-            .zilch-msg{'data-bind' => 'if: learningResources().length == 0'}
+
+            / ko if: learningResources().length == 0
+            .zilch-msg
                 .smiley :(
                 No resources yet.
                 %a{'data-bind' => 'click: toggleNewResourceForm'} Add something
+            / /ko
+
         / /ko
 
         / ko if:resourcesTab() === 'create'
