@@ -20,7 +20,7 @@ no centralized syllabus or timeframe.
 
 ## Technicalities
 
-Dexterous is a web application powered by Ruby on Rails framework.
+Dexterous is a web application powered by Ruby on [Rails framework](http://rubyonrails.org/).
 
 ## Current state of progress
 
@@ -30,6 +30,7 @@ of code, criticism or suggestions.
 
 ## License
 
-Code is released under GPL v3.0 license. Please see the document named LICENSE
-in the project root. If you would like to use Dexterous but find its license
-unsuitable for your purpose, please get in touch.
+Code is released under [GPL v3.0 license](https://www.gnu.org/copyleft/gpl.html).
+Please see the document named LICENSE in the project root. If you would like to
+use Dexterous but find its license unsuitable for your purpose, please
+feel free to get in touch.
