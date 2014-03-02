@@ -6,7 +6,7 @@
 
     %ul#pseudo-milestone-list
         - if @model.contributable_by? current_user
-            %li{'data-bind' => 'with: freshMilestone()'}
+            %li{'data-bind' => 'with: track.freshMilestone()'}
                 .milestone-inner
                     .thumb
                     .pointer

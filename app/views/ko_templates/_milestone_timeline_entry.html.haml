@@ -27,7 +27,7 @@
         / /ko
 
     .resource-thumb
-        %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResourceList'}
+        %a.resource-num{'data-bind' => 'text: learningResources().length + " resources", click: toggleResourceList'}
         %a.resource-create-thumb{'data-bind' => 'click: toggleNewResourceForm'}
             %i.fa.fa-plus-circle
 
@@ -42,8 +42,11 @@
             Learning resources to help you complete this milestone :
 
         .resource-list-wrapper
-            %ul.resource-list{'data-bind' => 'if:resources.length > 0'}
-            .zilch-msg
+            / ko if: learningResources().length > 0
+            %ul.resource-list{'data-bind' => 'each: learningResources()'}
+                %li{'data-bind' => 'text: title'}
+            / /ko
+            .zilch-msg{'data-bind' => 'if: learningResources().length == 0'}
                 .smiley :(
                 No resources yet.
                 %a{'data-bind' => 'click: toggleNewResourceForm'} Add something

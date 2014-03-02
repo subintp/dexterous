@@ -61,7 +61,17 @@ class ResourceController < ApplicationController
   end
 
   def model_name
-    self.class.name[0..-11].downcase
+    self.class.name[0..-11].singularize.downcase
+  end
+
+  def load_track
+    mname = :"#{model_name}"
+    if params[mname].nil? or params[mname][:track_id].nil?
+        head :not_found
+        return
+    end
+    @track = Track.find params[mname][:track_id]
+    head :not_found if @track.nil?
   end
 
 end

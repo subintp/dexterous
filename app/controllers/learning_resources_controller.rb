@@ -22,9 +22,4 @@ class LearningResourcesController < ResourceController
       .permit(:url, :title, :description, :metadata, :milestone_id, :track_id)
   end
 
-  def load_track
-    head :not_found if params[:learning_resource].nil? or params[:learning_resource][:track_id].nil?
-    @track = Track.find params[:learning_resource][:track_id]
-    head :not_found if @track.nil?
-  end
 end

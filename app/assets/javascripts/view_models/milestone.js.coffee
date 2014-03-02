@@ -7,7 +7,6 @@
 class dx.Milestone extends dx.ViewModel
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
     @observables: ['title', 'description', 'updated_at', 'resourcesTab', 'beingEdited', 'isBusy', 'freshResource']
-    @observableArrays: ['resources']
     @endpoint: 'milestones'
     @ignored: ['beingEdited', 'isBusy', 'freshResource', 'resources', 'editable', 'deletable']
 
@@ -16,6 +15,9 @@ class dx.Milestone extends dx.ViewModel
     constructor: ->
         super
         @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
+        @learningResources = ko.computed ->
+            _.filter app.viewModels.learningResources(), (res)=>
+                res.milestone_id() == @id
 
     toggleResourceList: ->
         @resourcesTab if @resourcesTab() == 'list' then null else 'list'
@@ -38,3 +40,4 @@ class dx.Milestone extends dx.ViewModel
             @destroy()
                 .then =>
                     app.viewModels.milestones.remove @
+

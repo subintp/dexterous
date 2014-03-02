@@ -10,7 +10,6 @@
 
 @app.viewModels =
     track: null
-    freshMilestone: ko.observable(new dx.Milestone)
     milestones: ko.observableArray()
     learningResources: ko.observableArray()
 

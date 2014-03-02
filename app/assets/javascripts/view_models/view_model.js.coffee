@@ -28,3 +28,8 @@ class dx.ViewModel
                 unless patch and _.isEmpty params[prop]
                     @[prop] params[prop]
         
+    purge: ->
+        _.each @constructor.observables, (prop)=>
+            @[prop] null
+        _.each @constructor.observableArrays, (prop)=>
+            @[prop].removeAll()
