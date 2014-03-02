@@ -20,13 +20,15 @@ no centralized syllabus or timeframe.
 
 ## Technicalities
 
-Dexterous is a web application powered by Ruby on [Rails framework](http://rubyonrails.org/).
+Dexterous is a web application powered by [Ruby on Rails framework](http://rubyonrails.org/).
 
 ## Current state of progress
 
 Dexterous is very much a work in progress. But the preliminary functionalities
 are in place and goals are well defined. We welcome any contributions in form
-of code, criticism or suggestions.
+of code, criticism or suggestions. Please use
+[Github issues](https://github.com/lorefnon/dexterous/issues) for reporting bugs
+or suggesting ideas.
 
 ## License
 
