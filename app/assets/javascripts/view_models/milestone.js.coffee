@@ -36,3 +36,5 @@ class dx.Milestone extends dx.ViewModel
         if confirm 'Are you sure?'
             @isBusy true
             @destroy()
+                .then =>
+                    app.viewModels.milestones.remove @
