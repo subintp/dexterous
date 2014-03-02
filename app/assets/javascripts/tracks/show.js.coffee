@@ -1,6 +1,7 @@
 #= require ../application
 #= require knockout
 #= require jquery.timeago
+#= require jquery.color
 
 #= require_tree ../bindings
 #= require_tree ../view_models
@@ -31,3 +32,9 @@ $ ->
             .children('.body')
             .css('min-height', win.height() - dashboard.children('header').outerHeight() - dashboard.children('footer').outerHeight())
 
+    $('body').on 'click', 'form .row', ->
+        $(this)
+            .find('input,textarea')
+            .focus()
+            .css('background-color', 'lemonchiffon')
+            .animate({'background-color': 'transparent'}, 1000)
