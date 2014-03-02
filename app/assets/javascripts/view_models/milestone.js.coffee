@@ -14,6 +14,7 @@ class dx.Milestone extends dx.ViewModel
 
     constructor: ->
         super
+        @_pristine = {}
         @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
         @learningResources = ko.computed ->
             _.filter app.viewModels.learningResources(), (res)=>
@@ -29,15 +30,24 @@ class dx.Milestone extends dx.ViewModel
         @resourcesTab null
 
     cancelEdit: ->
+        @title @_pristine.title
+        @description @_pristine.description
         @beingEdited false
 
     startEdit: ->
         @beingEdited true
+        _.extend @_pristine,
+            title: @title()
+            description: @description()
 
     startDelete: ->
         if confirm 'Are you sure?'
             @isBusy true
-            @destroy()
-                .then =>
-                    app.viewModels.milestones.remove @
+            @destroy().done => app.viewModels.milestones.remove @
 
+    startSave: ->
+        @isBusy true
+        @save().done =>
+            @isBusy false
+            @beingEdited false
+            @_prisine = null
