@@ -13,7 +13,7 @@
         = f.label :title, 'I would like to explore : '
         = f.text_field :title, placeholder: 'eg. Ruby on Rails'
       %section{'data-bind' => 'visible: step() == 1'}
-        = f.label :description, 'Add a small description for your track (Optional)'
+        = f.label :description, 'Add a small description for your track (Optional)', class: 'blk'
         = f.text_area :description
       %section{'data-bind' => 'visible: step() == 2'}
         = f.label :visibility, 'Who can view the track'
@@ -24,7 +24,7 @@
         .select-wrapper
           = f.select :contributability, [['Only me', 'private'], ['Me and people I share with', 'restricted'], ['Allow users to contribute suggestions', 'permissive'], ['Any user', 'public']]
         %br
-        = f.submit 'Create', class: 'pure-button pure-button-primary'
+        = f.submit 'Create', class: 'pure-button pure-button-primary final'
   .wizard-footer
     .pagination-wrapper
       / ko if: step() > 0 
