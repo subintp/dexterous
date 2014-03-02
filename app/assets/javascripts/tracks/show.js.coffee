@@ -10,20 +10,7 @@
 
 @app.viewModels =
     track: null
-    newMilestone:
-        title: ko.observable()
-        description: ko.observable()
-        save: ->
-            app.endpoints.milestones
-                .create
-                    title: @title()
-                    description: @description()
-                    track_id: app.viewModels.track.id
-                .then (data)=>
-                    app.viewModels.milestones.push data
-                    @title ''
-                    @description ''
-
+    freshMilestone: ko.observable(new dx.Milestone)
     milestones: ko.observableArray()
     learningResources: ko.observableArray()
 

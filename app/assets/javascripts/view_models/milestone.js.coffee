@@ -15,7 +15,7 @@ class dx.Milestone extends dx.ViewModel
 
     constructor: ->
         super
-        @freshResource new dx.LearningResource track_id: @track_id
+        @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
 
     toggleResourceList: ->
         @resourcesTab if @resourcesTab() == 'list' then null else 'list'

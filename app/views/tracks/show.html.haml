@@ -84,18 +84,18 @@
 
         %ul#pseudo-milestone-list
             - if @model.contributable_by? current_user
-                %li{'data-bind' => 'with: newMilestone'}
+                %li{'data-bind' => 'with: freshMilestone()'}
                     .milestone-inner
                         .thumb
                         .pointer
-                        %h1{'data-bind' => 'inlineEditable: title'}
-                            .default
-                                New milestone (Click to edit)
-                        %div.description{'data-bind' => 'inlineBoxEditable: description'}
-                            .default
-                                Description of this milestone goes here (Click to edit)
-                        .controls
-                            %a.pure-button.pure-button-primary{'data-bind' => 'click: save'} Save
+                        / ko if: beingEdited
+                        .milestone-form-wrapper{'data-bind' => 'template: { name: "milestone-form", data: $data} '}
+                        / /ko
+
+                        / ko ifnot: beingEdited
+                        %p Milestones are goals which help you keep track of your progress
+                        %a{'data-bind' => 'click: startEdit'} Create a milestone
+                        / /ko
 
 
 %script{type: 'text/html', id: 'lr-form'}
