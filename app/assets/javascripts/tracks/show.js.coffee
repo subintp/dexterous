@@ -38,3 +38,4 @@ $ ->
             .focus()
             .css('background-color', 'lemonchiffon')
             .animate({'background-color': 'transparent'}, 1000)
+

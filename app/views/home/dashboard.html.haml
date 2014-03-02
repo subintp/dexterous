@@ -1,18 +1,29 @@
 - content_for :head do
-  = stylesheet_link_tag 'home/dashboard', media: :all
-  = javascript_include_tag "home/dashboard"
+    = stylesheet_link_tag 'home/dashboard', media: :all
+    = javascript_include_tag "home/dashboard"
 
-- if @tracks.length == 0
-  = render partial: 'introduction'
+- if @enrollments.length == 0
+    = render partial: 'introduction'
 - else
-  #tracks-container
-    - @tracks.each do |track|
-      .track-wrapper
-        .track-inner
-          %header
-            %h3= track.title
-          .body
-            %h4 Upcoming milestones
-            None
-          %footer
-            = link_to 'View Track', controller: 'tracks', action: 'show', id: track.id
+    #enrollment-summary
+        %h2 You are enrolled in #{@enrollments.length} tracks
+    - @enrollments.each do |en|
+        .enrollment-report
+            %h3
+                = link_to en.track.title, controller: 'tracks', action: 'show', id: en.track.id
+            .milestone-completion-report
+                %strong Completed
+                %span.completed-milestones= en.milestones.length
+                out of
+                %span.total-milestones= en.track.milestones.length
+    #ownership-summary
+        %h2
+            Tracks owned by you
+            %span.num-owned-tracks= current_user.owned_tracks.length
+            %ul.owned-tracks-list
+                - current_user.owned_tracks.each do |t|
+                    %li
+                        %a
+                            %h3= t.title
+                
+        

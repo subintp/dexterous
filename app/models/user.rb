@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
     has_many :"owned_#{resource.underscore.pluralize}",
       inverse_of: :owner,
+      foreign_key: :owner_id,
       class_name: resource
 
   end

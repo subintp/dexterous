@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, only: ['dashboard']
 
   def dashboard
-    @tracks = current_user.enrolled_tracks.includes :milestones
+    @enrollments = current_user.enrollments.includes :track
     @new_track = Track.new
     render 'dashboard', layout: 'dashboard'
   end
