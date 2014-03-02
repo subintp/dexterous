@@ -3,9 +3,9 @@
     %h1
       Create a fresh new track
   .wizard-body
-    - @track.errors.full_messages.each do |msg|
+    - @model.errors.full_messages.each do |msg|
       %p.error= msg
-    = form_for @track do |f|
+    = form_for @model do |f|
       %section{'data-bind' => 'visible:step() == 0'}
         = f.label :title, 'I would like to explore : '
         = f.text_field :title, placeholder: 'eg. Ruby on Rails'
