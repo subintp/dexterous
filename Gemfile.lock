@@ -1,15 +1,6 @@
 GIT
-  remote: git://github.com/907th/guard-rspec.git
-  revision: d4b064ac95f3c569931473d2a08e56487dadb4d4
-  branch: fix_249
-  specs:
-    guard-rspec (4.2.6)
-      guard (~> 2.1)
-      rspec (>= 2.14, < 4.0)
-
-GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: e71ee840ecf2de1df0c4db938e19d4935ce8d183
+  revision: a7c1d356dfa23391aefbfc9d20cb72116226ee04
   branch: master
   specs:
     rspec-core (3.0.0.beta2)
@@ -17,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: fdca0aba1acb1d4e34d023165d3945f91f6587ca
+  revision: 1310929b035417adbd08e971bfbe85ade21d0a89
   branch: master
   specs:
     rspec-expectations (3.0.0.beta2)
@@ -26,7 +17,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: d57d186157b75da072c9918fde8089accf15b5bd
+  revision: f3941638cf14e529f35a7fa7de23e30c71e20d76
   branch: master
   specs:
     rspec-mocks (3.0.0.beta2)
@@ -34,7 +25,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: b9000a1d594d212cad0eabc7f4f49222dabca4d3
+  revision: 10ab4bfcb79edd7e61dcd4b8901931af80fbcccc
   branch: master
   specs:
     rspec-rails (3.0.0.beta2)
@@ -50,7 +41,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-support.git
-  revision: e914012452e88b61693ef31ae77afcbf8ea452d2
+  revision: 045b15931bd14288188f777d3b2c529d2077e594
   branch: master
   specs:
     rspec-support (3.0.0.beta2)
@@ -83,11 +74,11 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    atomic (1.1.14)
+    atomic (1.1.15)
     authority (2.9.0)
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
-    bcrypt (3.1.6)
+    bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
     builder (3.1.4)
@@ -113,7 +104,7 @@ GEM
     coffee-script-source (1.7.0)
     colorize (0.6.0)
     columnize (0.3.6)
-    cucumber (1.3.10)
+    cucumber (1.3.11)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12)
@@ -125,12 +116,12 @@ GEM
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
     database_cleaner (1.2.0)
-    debugger (1.6.5)
+    debugger (1.6.6)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.1)
+      debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.1)
+    debugger-ruby_core_source (1.3.2)
     devise (3.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -146,7 +137,7 @@ GEM
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.0)
+    factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
@@ -155,9 +146,9 @@ GEM
     formatador (0.2.4)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    guard (2.4.0)
+    guard (2.5.1)
       formatador (>= 0.2.4)
-      listen (~> 2.1)
+      listen (~> 2.6)
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
@@ -165,6 +156,9 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.0)
       multi_json (~> 1.8)
+    guard-rspec (4.2.7)
+      guard (~> 2.1)
+      rspec (>= 2.14, < 4.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -189,7 +183,7 @@ GEM
       colorize
       railties (>= 3.1, < 5)
       sprockets
-    listen (2.5.0)
+    listen (2.6.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
@@ -269,8 +263,8 @@ GEM
       stylus-source
     stylus-source (0.42.2)
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thread_safe (0.2.0)
+      atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timers (1.1.0)
     treetop (1.4.15)
@@ -307,7 +301,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   guard-livereload
-  guard-rspec!
+  guard-rspec
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
