@@ -1,0 +1,20 @@
+#spine
+#milestones
+    %ul#milestone-list{'data-bind' => "foreach: milestones"}
+        %li
+            .milestone-inner{'data-bind' => 'template: { name: "milestone_timeline_entry_tmpl", data: $data }'}
+
+    %ul#pseudo-milestone-list
+        - if @model.contributable_by? current_user
+            %li{'data-bind' => 'with: freshMilestone()'}
+                .milestone-inner
+                    .thumb
+                    .pointer
+                    / ko if: beingEdited
+                    .milestone-form-wrapper{'data-bind' => 'template: { name: "milestone_form_tmpl", data: $data} '}
+                    / /ko
+
+                    / ko ifnot: beingEdited
+                    %p Milestones are goals which help you keep track of your progress
+                    %a#create-milestone-btn.pure-button{'data-bind' => 'click: startEdit'} Create a milestone
+                    / /ko

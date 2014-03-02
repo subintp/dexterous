@@ -1,0 +1,12 @@
+%form.pure-form.inline-form{'data-bind' => 'submit: save'}
+    .row.row-title
+        %label Title
+        %input{type: 'text', 'data-bind' => 'value: title'}
+    .row.row-url
+        %label Url
+        %input{type: 'text', 'data-bind' => 'value: url'}
+    .row.row-description
+        %label Description
+        %textarea{'data-bind' => 'value: description'}
+    .row.row-submit
+        %input{type: 'submit', value: 'Submit'}

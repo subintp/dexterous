@@ -1,0 +1,10 @@
+.created-timestamp.timestamp-container
+    %label
+        %i.fa.fa-clock-o
+        Created:
+    %div{'data-bind' => 'timeago: created_at'}
+.updated-timestap.timestamp-container{'data-bind' => 'if:updated_at() != created_at '}
+    %label
+        %i.fa.fa-clock-o
+        Last updated:
+    %div{'data-bind' => 'timeago: updated_at()'}

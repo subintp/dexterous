@@ -1,0 +1,12 @@
+%a.rfloat{'data-bind' => 'click: cancelEdit'}
+    %i.fa.fa-times-circle
+%form.inline-form.pure-form{'data-bind' => 'submit: save'}
+    .row.row-title
+        %label Title
+        %input{type: 'text', 'data-bind' => 'value: title'}
+    .row.row-description
+        %label Description
+        %textarea{'data-bind' => 'value: description'}
+    .row.row-submit
+        %input{type: 'submit', value: 'Save'}
+        %button.cancel-btn{'data-bind' => 'click: cancelEdit'} Cancel
