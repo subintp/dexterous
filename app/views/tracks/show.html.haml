@@ -9,78 +9,7 @@
     #milestones
         %ul#milestone-list{'data-bind' => "foreach: milestones"}
             %li
-                .milestone-inner
-                    .thumb
-                    .pointer
-                    / ko if: isBusy
-                    .overlay
-                        .loader
-                    / /ko
-
-                    / ko if: beingEdited
-                    .milestone-form-wrapper{'data-bind' => 'template: { name: "milestone-form", data: $data} '}
-                    / /ko
-
-                    / ko ifnot: beingEdited
-                    %h1{'data-bind' => "text: title"}
-                    %div
-                        %p.description{'data-bind' => 'text: description'}
-                    .milestone-footer
-                        .milestone-controls.lfloat
-
-                            / ko if:editable
-                            %a.edit-thumb{'data-bind' => 'click: startEdit'}
-                                %i.fa.fa-edit
-                            / /ko
-
-                            / ko if:deletable
-                            %a.del-thumb{'data-bind' => 'click: startDelete'}
-                                %i.fa.fa-trash-o
-                            / /ko
-
-                        .resource-thumb
-                            %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResourceList'}
-                            %a.resource-create-thumb{'data-bind' => 'click: toggleNewResourceForm'}
-                                %i.fa.fa-plus-circle
-
-                        / ko if:resourcesTab()
-                        .resource-dropdown
-                            .arrow
-
-                            / ko if:resourcesTab() === 'list'
-                            %h2
-                                %a{'data-bind' => 'click: closeDropdown'}
-                                    %i.rfloat.fa.fa-times-circle
-                                Learning resources to help you complete this milestone :
-
-                            .resource-list-wrapper
-                                %ul.resource-list{'data-bind' => 'if:resources.length > 0'}
-                                .zilch-msg
-                                    .smiley :(
-                                    No resources yet.
-                                    %a{'data-bind' => 'click: toggleNewResourceForm'} Add something
-                            / /ko
-
-                            / ko if:resourcesTab() === 'create'
-                            %h2
-                                %a{'data-bind' => "click: closeDropdown"}
-                                    %i.rfloat.fa.fa-times-circle
-                                Add a new Resource:
-                            .resource-form-wrapper{'data-bind' => 'template:{ name: "lr-form", data: freshResource() }' }
-                            / /ko
-                        / /ko
-                    / /ko
-                    .side-container
-                        .created-timestamp.timestamp-container
-                            %label
-                                %i.fa.fa-clock-o
-                                Created:
-                            %div{'data-bind' => 'timeago: created_at'}
-                        .updated-timestap.timestamp-container{'data-bind' => 'if:updated_at() != created_at '}
-                            %label
-                                %i.fa.fa-clock-o
-                                Last updated:
-                            %div{'data-bind' => 'timeago: updated_at()'}
+                .milestone-inner{'data-bind' => 'template: { name: "milestoneTimelineEntry", data: $data }'}
 
         %ul#pseudo-milestone-list
             - if @model.contributable_by? current_user
@@ -126,6 +55,81 @@
             %input{type: 'submit', value: 'Save'}
             %button.cancel-btn{'data-bind' => 'click: cancelEdit'} Cancel
 
+%script{type: 'text/html', id: 'milestoneSideContainer'}
+    .created-timestamp.timestamp-container
+        %label
+            %i.fa.fa-clock-o
+            Created:
+        %div{'data-bind' => 'timeago: created_at'}
+    .updated-timestap.timestamp-container{'data-bind' => 'if:updated_at() != created_at '}
+        %label
+            %i.fa.fa-clock-o
+            Last updated:
+        %div{'data-bind' => 'timeago: updated_at()'}
+
+%script{type: 'text/html', id: 'milestoneTimelineEntry'}
+    .thumb
+    .pointer
+    / ko if: isBusy
+    .overlay
+        .loader
+    / /ko
+
+    / ko if: beingEdited
+    .milestone-form-wrapper{'data-bind' => 'template: { name: "milestone-form", data: $data} '}
+    / /ko
+
+    / ko ifnot: beingEdited
+    %h1{'data-bind' => "text: title"}
+    %div
+        %p.description{'data-bind' => 'text: description'}
+    .milestone-footer
+        .milestone-controls.lfloat
+
+            / ko if:editable
+            %a.edit-thumb{'data-bind' => 'click: startEdit'}
+                %i.fa.fa-edit
+            / /ko
+
+            / ko if:deletable
+            %a.del-thumb{'data-bind' => 'click: startDelete'}
+                %i.fa.fa-trash-o
+            / /ko
+
+        .resource-thumb
+            %a.resource-num{'data-bind' => 'text: resources.length + " resources", click: toggleResourceList'}
+            %a.resource-create-thumb{'data-bind' => 'click: toggleNewResourceForm'}
+                %i.fa.fa-plus-circle
+
+        / ko if:resourcesTab()
+        .resource-dropdown
+            .arrow
+
+            / ko if:resourcesTab() === 'list'
+            %h2
+                %a{'data-bind' => 'click: closeDropdown'}
+                    %i.rfloat.fa.fa-times-circle
+                Learning resources to help you complete this milestone :
+
+            .resource-list-wrapper
+                %ul.resource-list{'data-bind' => 'if:resources.length > 0'}
+                .zilch-msg
+                    .smiley :(
+                    No resources yet.
+                    %a{'data-bind' => 'click: toggleNewResourceForm'} Add something
+            / /ko
+
+            / ko if:resourcesTab() === 'create'
+            %h2
+                %a{'data-bind' => "click: closeDropdown"}
+                    %i.rfloat.fa.fa-times-circle
+                Add a new Resource:
+            .resource-form-wrapper{'data-bind' => 'template:{ name: "lr-form", data: freshResource() }' }
+            / /ko
+        / /ko
+    / /ko
+    .side-container{'data-bind' => 'template: { name: "milestoneSideContainer", data: $data }'}
+
 = javascript_include_tag "tracks/show"
 
 / Bootstrap the bindings with the data we already have
@@ -136,3 +140,4 @@
     - @model.learning_resources.each do |l|
         != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
     ko.applyBindings(app.viewModels);
+
