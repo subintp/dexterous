@@ -61,7 +61,7 @@ class ResourceController < ApplicationController
   end
 
   def model_name
-    self.class.name[0..-11].singularize.downcase
+    self.class.name[0..-11].singularize.underscore.downcase
   end
 
   def load_track

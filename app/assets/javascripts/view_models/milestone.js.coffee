@@ -16,7 +16,7 @@ class dx.Milestone extends dx.ViewModel
         super
         @_pristine = {}
         @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
-        @learningResources = ko.computed ->
+        @learningResources = ko.computed =>
             _.filter app.viewModels.learningResources(), (res)=>
                 res.milestone_id() == @id
 
