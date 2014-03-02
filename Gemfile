@@ -54,6 +54,8 @@ group :development , :test do
   gem 'shoulda-matchers'
   gem 'debugger'
   gem 'konacha'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 # Auxiliary utilities to ease development
