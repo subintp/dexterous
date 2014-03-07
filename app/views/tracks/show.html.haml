@@ -18,7 +18,7 @@
     != "app.viewModels.track = new dx.Track(#{@model.to_json});"
     - @model.milestones_for(current_user).each do |m|
         != "app.viewModels.milestones.push(new dx.Milestone(#{m.to_json}));"
-    - @model.learning_resources.each do |l|
+    - @model.learning_resources_for(current_user).each do |l|
         != "app.viewModels.learningResources.push(new dx.LearningResource(#{l.to_json}));"
 
     ko.applyBindings(app.viewModels);

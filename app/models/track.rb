@@ -35,18 +35,27 @@ class Track < ActiveRecord::Base
 
   def milestones_for(user)
     return nil unless viewable_by? user
-    milestones.map do |m|
-      m.serializable_hash.merge(
-        editable: m.editable_by?(user),
-        deletable: m.deletable_by?(user)
-      )
-    end
+    merge_permissions_for milestones, user
+  end
+
+  def learning_resources_for(user)
+    return nil unless viewable_by? user
+    merge_permissions_for learning_resources, user
   end
 
   private
 
   def enroll
     owner.enrolled_tracks << self
+  end
+
+  def merge_permissions_for(models, user)
+    models.map do |m|
+      m.serializable_hash.merge(
+        editable: m.editable_by?(user),
+        deletable: m.deletable_by?(user)
+      )
+    end
   end
 
 end
