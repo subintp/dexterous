@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222075245) do
+ActiveRecord::Schema.define(version: 20140222074257) do
 
   create_table "achievements", force: true do |t|
     t.integer  "enrollment_id"
@@ -27,11 +27,6 @@ ActiveRecord::Schema.define(version: 20140222075245) do
     t.integer  "track_id"
     t.datetime "enrolled_at"
     t.datetime "completed_at"
-  end
-
-  create_table "enrollments_milestones", force: true do |t|
-    t.integer "enrollment_id"
-    t.integer "milestone_id"
   end
 
   create_table "learning_resources", force: true do |t|
