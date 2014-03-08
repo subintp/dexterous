@@ -3,8 +3,8 @@ require 'spec_helper'
 describe LearningResource do
   describe "attributes" do
 
-    it "include url, title" do
-      %w{url title}.each do |field|
+    %w{url title description metadata}.each do |field|
+      it "include #{field}" do
         expect(LearningResource.attribute_names).to include field
         expect(LearningResource.column_names).to include field
       end

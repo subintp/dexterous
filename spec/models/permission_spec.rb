@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe Permission do
+         
+    describe "attributes" do
+        %w{can_view can_edit can_contribute can_manage}.each do |field|
+            it "include #{field}" do
+                expect(Permission.attribute_names).to include field
+                expect(Permission.column_names).to include field
+            end
+        end
+    end
+
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :track }
 
