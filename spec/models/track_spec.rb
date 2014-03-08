@@ -16,6 +16,19 @@ describe Track do
     it { is_expected.to belong_to :owner }
     it { is_expected.to have_many :permissions }
     it { is_expected.to have_many :enrollments }
+    it { is_expected.to have_many(:enrolled_users)
+        .through(:enrollments)
+        .source(:user)
+    }
+    it { is_expected.to have_many(:milestones) }
+    it { is_expected.to have_many(:achievements)
+        .through(:milestones)
+    }
+    it { is_expected.to have_many(:achievers)
+        .through(:achievements)
+        .source(:user)
+    }
+    it { is_expected.to have_many(:learning_resources) }
 
     it "can be created by any user" do
         expect(Track.creatable_by? build(:user)).to be true
