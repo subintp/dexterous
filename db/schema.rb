@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140222075245) do
 
   create_table "achievements", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "enrollment_id"
     t.integer  "milestone_id"
     t.integer  "duration"
     t.integer  "score"
