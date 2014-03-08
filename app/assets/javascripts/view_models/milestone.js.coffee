@@ -1,38 +1,46 @@
 #= require ./view_model
 #= require ./learning_resource
+#= require ./achievement
 #= require ../endpoints/endpoint
 #= require ./mixins/persistable
 #= require ./mixins/serializable
 
 class dx.Milestone extends dx.ViewModel
+
     @staticProps: ['id', 'track_id', 'created_at', 'editable', 'deletable']
-    @observables: ['title', 'description', 'updated_at', 'expected_duration', 'resourcesTab', 'beingEdited', 'isBusy', 'freshResource', 'currentResource']
+    @observables: [
+        'title', 'description', 'updated_at', 'expected_duration',
+        'resourcesTab', 'beingEdited', 'isBusy', 'freshResource',
+        'freshAchievement', 'currentResource'
+    ]
+    @observableArrays: [
+        { name: 'achievements', type: dx.Achievement },
+        { name: 'learningResources', type: dx.LearningResource, origName: 'learning_resources' }
+    ]
     @endpoint: 'milestones'
-    @ignored: ['beingEdited', 'isBusy', 'freshResource', 'resources', 'editable', 'deletable']
+    @ignored: [
+        'beingEdited', 'isBusy', 'freshResource',
+        'resources', 'editable', 'deletable'
+    ]
 
     _.extend @prototype, dx.mixin.persistable, dx.mixin.serializable
 
     genFreshResource: ->
-        fr = new dx.LearningResource track_id: @track_id, milestone_id: @id
-        save = fr.save
-        _this = this
-        fr.save = ->
-            _this.isBusy true
-            save.apply(this, arguments)
-                .done (data)->
-                    app.viewModels.learningResources.push new dx.LearningResource data
-                    _this.isBusy false
-                    _this.resourcesTab 'list'
-                    fr.purge
-        @freshResource fr
+        @freshResource new dx.LearningResource track_id: @track_id, milestone_id: @id
 
     constructor: ->
         super
         @_pristine = {}
         @genFreshResource()
-        @learningResources = ko.computed =>
-            _.filter app.viewModels.learningResources(), (res)=>
-                res.milestone_id() == @id
+
+        @achievement = ko.computed =>
+            if @achievements().length > 0
+                a = @achievements()[0]
+                a.isComplete true
+            else
+                a = new dx.Achievement milestone_id: @id, isComplete: false
+            a.milestone = @
+            a
 
     toggleResourceList: ->
         @resourcesTab if @resourcesTab() == 'list' then null else 'list'
@@ -69,3 +77,6 @@ class dx.Milestone extends dx.ViewModel
             @isBusy false
             @beingEdited false
             @_prisine = null
+
+    initialize: ->
+        super

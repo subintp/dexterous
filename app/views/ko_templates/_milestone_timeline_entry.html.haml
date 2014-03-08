@@ -1,6 +1,9 @@
 .thumb
 .pointer
 
+.achievement-wrapper{'data-bind' => 'with: achievement'}
+    %a.milestone-completion-thumb{'data-bind' => 'css: { complete: isComplete() }, click: toggleCompletion'}
+
 / ko if: isBusy
 .overlay
     .loader
@@ -89,4 +92,5 @@
 
     / /ko
 / /ko
+
 .side-container{'data-bind' => 'template: { name: "milestone_sidebar_container_tmpl", data: $data }'}

@@ -9,6 +9,9 @@ class TracksController < ResourceController
     @model ||= Track.new
   end
 
+  def edit
+  end
+
   def create
     @model = Track.new extract_params
     @model.owner = current_user
@@ -19,7 +22,7 @@ class TracksController < ResourceController
   end
 
   def show
-    @model = Track.includes(:milestones, :learning_resources).find params[:id]
+    @model = Track.includes( :learning_resources, :milestones => [:achievements]).find params[:id]
     head :not_found unless @model.viewable_by? current_user
   end
 

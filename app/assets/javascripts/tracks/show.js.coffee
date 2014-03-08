@@ -15,11 +15,11 @@
 @app.viewModels =
     track: null
     milestones: ko.observableArray()
-    learningResources: ko.observableArray()
 
 @app.endpoints =
     milestones: new dx.Endpoint('/milestones')
     learning_resources: new dx.Endpoint('/learning_resources')
+    achievements: new dx.Endpoint('/achievements')
 
 # Minor UI adjustments
 # ====================

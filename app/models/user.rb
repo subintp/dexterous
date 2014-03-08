@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :permissions
   has_many :tracks, through: :permissions
   has_many :enrollments
+  has_many :achievements
   has_many :enrolled_tracks,
     through: :enrollments,
     source: :track

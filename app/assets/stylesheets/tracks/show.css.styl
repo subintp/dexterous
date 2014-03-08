@@ -276,3 +276,20 @@
     border-bottom none
 
 
+.milestone-completion-thumb
+  
+  display: block;
+  height: 40px;
+  width: 55px;
+  position: absolute;
+  top: 0px;
+  left: -71px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
+
+  &:hover
+    opacity 0.5
+  &.complete, &:hover
+    background-image: url('http://localhost:3000/assets/achievement_complete.png');
+  &.complete:hover
+    background-image: url('http://localhost:3000/assets/achievement_remove.png');

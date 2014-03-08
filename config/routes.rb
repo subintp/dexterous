@@ -5,6 +5,7 @@ Dexterous::Application.routes.draw do
 
   resources :learning_resources
   resources :milestones
+  resources :achievements
 
   resources :tracks, {shallow: true} do
     resources :milestones, {shallow: true} do
