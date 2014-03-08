@@ -40,6 +40,18 @@ describe Track do
         t.save()
         t.owner.enrolled_tracks.include? t
     end
+    
+    it "validates presence of owner_id" do
+    end
+    
+    it "validates presence of title" do
+    end
+    
+    it "validates contributability" do
+    end
+    
+    it "validates visibility" do
+    end
 
     context "with open visibility" do
 
