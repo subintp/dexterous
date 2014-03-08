@@ -12,4 +12,10 @@ describe Milestone do
 
     it { is_expected.to belong_to(:owner).class_name('User') }
     it { is_expected.to belong_to :track }
+    it { is_expected.to have_many(:achievements) }
+    it { is_expected.to have_many(:achievers)
+        .through(:achievements)
+        .source(:user)
+    }
+    it { is_expected.to have_many(:learning_resources) }
 end
