@@ -15,9 +15,15 @@ describe Achievement do
     }
     it { is_expected.to belong_to(:milestone) }
     it "validates presence of enrollment_id" do
-        expect(Achievement.new).to have(1).error_on(:enrollment_id)
+        a = Achievement.new
+        expect(a).to have(1).error_on(:enrollment_id)
+        a.enrollment_id = 1
+        expect(a).to have(0).error_on(:enrollment_id)
     end
     it "validates presence of milestone_id" do
-        expect(Achievement.new).to have(1).error_on(:milestone_id)
+        a = Achievement.new
+        expect(a).to have(1).error_on(:milestone_id)
+        a.milestone_id = 1
+        expect(a).to have(0).error_on(:milestone_id)
     end
 end
