@@ -39,6 +39,8 @@ class Track < ActiveRecord::Base
     validates :contributability, inclusion: {
         in: %w{public permissive restricted private }
     }
+    
+    validates :owner_id, :title, presence: true
 
     def milestones_for(user)
         return nil unless viewable_by? user
