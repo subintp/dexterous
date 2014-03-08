@@ -9,5 +9,5 @@ class Milestone < ActiveRecord::Base
     has_many :achievements
     has_many :achievers, through: :achievements, source: :user
 
-    validate :track_id, :owner_id, presence: true
+    validates :track_id, :owner_id, presence: true
 end

@@ -18,4 +18,12 @@ describe Milestone do
         .source(:user)
     }
     it { is_expected.to have_many(:learning_resources) }
+    
+    it "validates presence of track_id" do
+        expect(Milestone.new).to have(1).error_on(:track_id)
+    end
+    
+    it "validates presence of owner_id" do
+        expect(Milestone.new).to have(1).error_on(:owner_id)
+    end
 end
