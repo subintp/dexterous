@@ -33,6 +33,13 @@ describe Track do
     it "can be created by any user" do
         expect(Track.creatable_by? build(:user)).to be true
     end
+    
+    it "enrolls the creator post creation" do
+        t = build(:track)
+        t.owner = build(:user)
+        t.save()
+        t.owner.enrolled_tracks.include? t
+    end
 
     context "with open visibility" do
 
