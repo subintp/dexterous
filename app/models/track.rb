@@ -4,9 +4,15 @@ class Track < ActiveRecord::Base
     belongs_to :owner, class_name: 'User'
     has_many :permissions
     has_many :enrollments
-    has_many :enrolled_users, through: :enrollments, source: :user
+    has_many :enrolled_users,
+        through: :enrollments,
+        source: :user
     has_many :milestones
-    has_many :achievements, through: :milestones
+    has_many :achievements,
+        through: :milestones
+    has_many :achievers,
+        through: :achievements,
+        source: :user
     has_many :learning_resources
     after_create :enroll
 
@@ -37,7 +43,7 @@ class Track < ActiveRecord::Base
     def milestones_for(user)
         return nil unless viewable_by? user
         milestones(include: {
-            milestones: { 
+            milestones: {
                 include: [{
                     achievements: {
                         where: { user_id: user.id }
@@ -62,7 +68,7 @@ class Track < ActiveRecord::Base
         return nil unless viewable_by? user
         merge_permissions_for learning_resources, user
     end
-    
+
     def achievements_for(user)
         achievements.where(user: user)
     end
