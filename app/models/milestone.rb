@@ -1,13 +1,13 @@
 class Milestone < ActiveRecord::Base
 
-  include Authority::Abilities
-  self.authorizer_name = "TrackItemAuthorizer"
+    include Authority::Abilities
+    self.authorizer_name = "TrackItemAuthorizer"
 
-  belongs_to :track
-  belongs_to :owner, class_name: 'User'
-  has_many :learning_resources
-  has_many :achievements
-  has_many :achievers, through: :achievements, source: :user
-  
-  validate :track_id, :owner_id, presence: true
+    belongs_to :track
+    belongs_to :owner, class_name: 'User'
+    has_many :learning_resources
+    has_many :achievements
+    has_many :achievers, through: :achievements, source: :user
+
+    validate :track_id, :owner_id, presence: true
 end
