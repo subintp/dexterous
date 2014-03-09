@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     has_many :tracks, through: :permissions
     has_many :enrollments
     has_many :achievements, through: :enrollments
-    has_many :achieved_milestones, 
+    has_many :achieved_milestones,
         through: :achievements,
         source: :milestone
 
@@ -42,4 +42,7 @@ class User < ActiveRecord::Base
             class_name: resource
     end
 
+    validates :name,
+        presence: true,
+        length: { minimum: 5, maximum: 30 }
 end

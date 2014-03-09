@@ -2,26 +2,17 @@
     = stylesheet_link_tag 'home/dashboard', media: :all
     = javascript_include_tag "home/dashboard"
 
-- if @enrollments.length == 0
-    = render partial: 'introduction'
-- else
-    #enrollment-summary
-        %h2 You are enrolled in #{@enrollments.length} tracks
-    - @enrollments.each do |en|
-        .enrollment-report
-            %h3
-                = link_to en.track.title, controller: 'tracks', action: 'show', id: en.track.id
-            .milestone-completion-report
-                %strong Completed
-                %span.completed-milestones= en.milestones.length
-                out of
-                %span.total-milestones= en.track.milestones.length
-    #ownership-summary
-        %h2
-            Tracks owned by you
-            %span.num-owned-tracks= current_user.owned_tracks.length
-            %ul.owned-tracks-list
-                - current_user.owned_tracks.each do |t|
-                    %li
-                        %a
-                            %h3= t.title
+/
+    - if @enrollments.length == 0
+        = render partial: 'introduction'
+
+#sidebar
+    #user-
+        %header
+            %h1= current_user.name
+        .body
+#main
+    %header
+
+    %footer
+        Dexterous is an experiment by <a href="http://twitter.com/lorefnon">@lorefnon</a>
