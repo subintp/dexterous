@@ -29,17 +29,19 @@
                             - if en.track.milestones.length == 0
                                 .zilch-msg
                             - i = 0
+                            - first = nil
                             %ul.milestones
                                 - en.track.milestones.each do |milestone|
                                     %li
                                         - if @achievements[milestone.id].nil?
                                             %span.ach-incomplete
                                         - else
+                                            - first = milestone if first.nil?
                                             %span.ach-complete
                                             - i += 1
                                         %span.title= milestone.title
                     .achievement-summary
-                        .nums
+                        %a.nums
                             %span.ach-count= i
                             = " / "
                             %span.milestone-count= en.track.milestones.length
