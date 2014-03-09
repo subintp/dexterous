@@ -1,5 +1,5 @@
 - content_for :head do
-    = stylesheet_link_tag 'home/dashboard', media: :all
+    = stylesheet_link_tag 'home/dashboard_new', media: :all
     = javascript_include_tag "home/dashboard"
 
 /
@@ -7,12 +7,40 @@
         = render partial: 'introduction'
 
 #sidebar
-    #user-
-        %header
-            %h1= current_user.name
-        .body
+    #user-info
+        %h2= current_user.name
+    %h1 Updates
 #main
     %header
-
-    %footer
-        Dexterous is an experiment by <a href="http://twitter.com/lorefnon">@lorefnon</a>
+        .rfloat
+            %input#search-box
+        %h1 Your tracks
+    .body
+        %ul#tracks
+            %li.track#new-track
+                = link_to "Create a track", controller: 'tracks', action: 'new'
+            - @enrollments.each do |en|
+                %li.track
+                    %header
+                        %h1= link_to en.track.title, en.track
+                    .body= en.track.description
+                    .milestones-outer-wrapper
+                        .milestones-wrapper
+                            - if en.track.milestones.length == 0
+                                .zilch-msg
+                            - i = 0
+                            %ul.milestones
+                                - en.track.milestones.each do |milestone|
+                                    %li
+                                        - if @achievements[milestone.id].nil?
+                                            %span.ach-incomplete
+                                        - else
+                                            %span.ach-complete
+                                            - i += 1
+                                        %span.title= milestone.title
+                    .achievement-summary
+                        .nums
+                            %span.ach-count= i
+                            = " / "
+                            %span.milestone-count= en.track.milestones.length
+                        Milestones Completed

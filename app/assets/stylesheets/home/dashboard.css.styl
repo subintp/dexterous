@@ -1,52 +1,53 @@
 @import '../mixins/dashboard'
 
 .track-wrapper
-  width 300px
-  position relative
-  float left
+    width 300px
+    position relative
+    float left
 
 .track-inner
-  position absolute
-  border 1px solid #CBCBCB
-  for dir in top left bottom right
-    {dir} 10px
-  header, footer
     position absolute
-    height 40px !important
-  header
-    for dir in top left right
-      {dir} 0
-    h3
-      font-size 1em
-      padding 0
-      margin 0
-      text-align center
-      line-height 40px
-  footer
-    for dir in bottom left right
-      {dir} 0
-    a
-      background #D3273A
-      color white
-      line-height 20px
-      border-radius 15px
-      padding 5px 20px
-      font-size 1.3em
-      position relative
-      top 7px
-  .body
-    position absolute
-    background white
-    for dir in left right
-      {dir} 0
-    for dir in top bottom
-      {dir} 40px
-    h4
-      color #D3273A
-      padding 10px
-      margin 0
-      text-align center
-      border-bottom 1px solid #E6E6E6
+    border 1px solid #CBCBCB
+    for dir in top left bottom right
+        {dir} 10px
+    header, footer
+        position absolute
+        height 40px !important
+    header
+        for dir in top left right
+            {dir} 0
+        h3
+            font-size 1em
+            padding 0
+            margin 0
+            text-align center
+            line-height 40px
+    footer
+        for dir in bottom left right
+            {dir} 0
+        a
+            background #D3273A
+            color white
+            line-height 20px
+            border-radius 15px
+            padding 5px 20px
+            font-size 1.3em
+            position relative
+            top 7px
+    .body
+        position absolute
+        background white
+        for dir in left right
+            {dir} 0
+        for dir in top bottom
+            {dir} 40px
+        h4
+            color #D3273A
+            padding 10px
+            margin 0
+            text-align center
+            border-bottom 1px solid #E6E6E6
 
 body
-  overflow hidden
+    overflow hidden
+
