@@ -10,6 +10,13 @@ body
 
 .rfloat
     float right
+.tcenter
+    text-align center
+.lfloat
+    float left
+.no-mp
+    margin 0
+    padding 0
 
 #dashboard > header
     position absolute
@@ -107,6 +114,10 @@ body
     padding 10px
     font-size 0.8em
     text-align center
+    &:hover
+        background #AAD400
+        cursor pointer
+        color white
     .num-thumb
         font-size 3.6em
         font-size 100
@@ -120,3 +131,42 @@ body
     .zilch
       text-align center
       color #D3D3D3
+.avgrund-popin
+    border-top 2px solid #FFDF0D
+.milestones
+    h2
+        border-bottom 2px solid #FAFAFA
+        margin 0
+        padding 5px 0
+        font-size 1em
+        font-weight 400
+        color #CF0018
+        position absolute
+        top 0
+        left 0
+        right 0
+    ul
+        list-style-type none
+        padding 0
+        margin 0
+        position absolute
+        top 30px
+        bottom 55px
+        left 0
+        right 0
+        padding 10px
+        li
+            border-bottom 1px dashed #FAFAFA
+            display block
+            padding 5px
+    .explore-wrapper
+        border-top 1px solid #FAFAFA
+        position absolute
+        bottom 0
+        left 0
+        right 0
+        padding 10px
+        a
+            border-radius 17px
+            background #AAD400
+            color white
