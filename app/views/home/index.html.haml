@@ -21,15 +21,7 @@
           = f.submit "Login", class: 'pure-button pure-button-primary'
     #register-popup.popup-form
       .arrow
-      = form_for resource, as: resource_name, url: registration_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
-        %fieldset
-          = f.label :email
-          = f.email_field :email
-          = f.label :password
-          = f.password_field :password
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation
-          = f.submit "Register", class: 'pure-button pure-button-primary'
+      = render partial: 'devise/registrations/new'
   .inner-1
     .inner-2
       .inner-3
