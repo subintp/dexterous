@@ -22,7 +22,9 @@
             - @enrollments.each do |en|
                 %li.track
                     %header
-                        %h1= link_to en.track.title, en.track
+                        %h1
+                            %i.fa.fa-road
+                            = link_to en.track.title, en.track
                     .body= en.track.description
                     - i = 0
                     - first = nil
@@ -32,14 +34,14 @@
                             - en.track.milestones.each do |milestone|
                                 %li
                                     - if @achievements[milestone.id].nil?
-                                        %span.ach-incomplete
+                                        %i.fa.fa-circle-o
                                     - else
                                         - first = milestone if first.nil?
-                                        %span.ach-complete
+                                        %i.fa.fa-check-circle-o
                                         - i += 1
                                     %span.title= milestone.title
                         .explore-wrapper.tcenter
-                            %a.pure-button Explore Track
+                            = link_to "Explore Track", en.track, class: 'pure-button'
                     .achievement-summary
                         %a.num-thumb
                             %span.ach-count= i
