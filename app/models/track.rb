@@ -14,7 +14,7 @@ class Track < ActiveRecord::Base
         through: :achievements,
         source: :user
     has_many :learning_resources
-    after_create :enroll
+    after_create :enroll, :create_topic
     has_many :topics, as: :subject
 
     # visibility:
@@ -79,7 +79,11 @@ class Track < ActiveRecord::Base
     private
 
     def enroll
-        owner.enrolled_tracks << self
+        Enrollment.create track: self, user: owner
+    end
+
+    def create_topic
+        Topic.create subject: self
     end
 
     def merge_permissions_for(models, user)
