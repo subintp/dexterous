@@ -141,6 +141,9 @@ GEM
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
@@ -240,6 +243,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
+    recaptcha (0.3.6)
     rspec (3.0.0.beta2)
       rspec-core (= 3.0.0.beta2)
       rspec-expectations (= 3.0.0.beta2)
@@ -299,6 +303,7 @@ DEPENDENCIES
   debugger
   devise
   factory_girl_rails
+  figaro
   font-awesome-rails
   guard-livereload
   guard-rspec
@@ -312,6 +317,7 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 4.0.2)
+  recaptcha
   rspec (~> 3.0.0.beta2)
   rspec-core (~> 3.0.0.beta2)!
   rspec-expectations!
