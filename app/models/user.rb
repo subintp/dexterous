@@ -8,16 +8,22 @@ class User < ActiveRecord::Base
     include Authority::UserAbilities
 
     has_many :permissions
-    has_many :tracks, through: :permissions
+    has_many :tracks,
+        through: :permissions
     has_many :enrollments
-    has_many :achievements, through: :enrollments
+    has_many :achievements,
+        through: :enrollments
     has_many :achieved_milestones,
         through: :achievements,
         source: :milestone
-
     has_many :enrolled_tracks,
         through: :enrollments,
         source: :track
+    has_many :subscriptions
+    has_many :topics,
+        through: :subscriptions
+    has_many :updates,
+        through: :subscriptions
 
     adjective_map = {
         view: :viewable,

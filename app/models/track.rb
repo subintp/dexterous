@@ -15,6 +15,7 @@ class Track < ActiveRecord::Base
         source: :user
     has_many :learning_resources
     after_create :enroll
+    has_many :topics, as: :subject
 
     # visibility:
     # ----------

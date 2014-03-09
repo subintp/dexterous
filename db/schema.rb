@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222074257) do
+ActiveRecord::Schema.define(version: 20140309220456) do
 
   create_table "achievements", force: true do |t|
     t.integer  "enrollment_id"
@@ -63,12 +63,33 @@ ActiveRecord::Schema.define(version: 20140222074257) do
     t.datetime "updated_at"
   end
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.integer  "subject_id"
+    t.integer  "subject_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tracks", force: true do |t|
     t.integer  "owner_id"
     t.string   "title"
     t.text     "description"
     t.string   "visibility"
     t.string   "contributability"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "updates", force: true do |t|
+    t.integer  "topic_id"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
