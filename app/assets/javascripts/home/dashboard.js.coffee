@@ -7,5 +7,11 @@ $ ->
         blockElement: 'li.track'
         numOfCol: 3
 
-    $('.nums').click ->
-        el = $ @
+    $('.track').each ->
+        $this = $ this
+        if $this.find('.milestones li').length > 0
+            console.log 'Setting up avgrund'
+            $this.find('.num-thumb').avgrund
+                width: 380
+                height: 280
+                template: $this.find('.milestones')

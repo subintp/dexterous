@@ -5,6 +5,7 @@ class MilestonesController < ResourceController
     def create
         if model_class.creatable_by? current_user, track: @track
             @model = model_class.new extract_params
+            @model.owner = current_user
             @model.save!
             render json: @model
         else
