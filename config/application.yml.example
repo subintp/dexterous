@@ -1,0 +1,2 @@
+RECAPTCHA_PUBLIC_KEY: <enter recaptcha public key>
+RECAPTCHA_PRIVATE_KEY: <enter recaptcha private key>
