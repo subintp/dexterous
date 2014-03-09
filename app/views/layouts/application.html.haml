@@ -1,13 +1,13 @@
 !!!
 %html
-  %head
-    %title Dexterous
-    = csrf_meta_tags
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway:400,100", media: 'all'
-    = stylesheet_link_tag 'pure.css', media: :all
-    = yield :head if content_for? :head
-  %body
-    .notice= notice
-    .alert= alert
+    %head
+        %title Dexterous
+        = csrf_meta_tags
+        = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway:400,100", media: 'all'
+        = stylesheet_link_tag 'pure.css', media: :all
+        = yield :head if content_for? :head
+    %body
+        .notice= notice
+        .alert= alert
 
-    = content_for?(:content) ? yield(:content) : yield
+        = content_for?(:content) ? yield(:content) : yield

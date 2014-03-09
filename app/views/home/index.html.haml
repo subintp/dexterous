@@ -1,46 +1,46 @@
 - content_for :head do
-  = stylesheet_link_tag 'home/index', media: :all
-  = javascript_include_tag "home/index"
+    = stylesheet_link_tag 'home/index', media: :all
+    = javascript_include_tag "home/index"
 #banner
-  #login-links
-    - if user_signed_in?
-      = link_to 'Dashboard', action: :dashboard, id: 'dashboard-thumb'
-      = link_to 'Logout', destroy_user_session_path, id: 'logout-thumb'
-    - else
-      = link_to 'Login', new_user_session_path, id: 'login-thumb'
-      = link_to 'Register', new_user_registration_path, id: 'register-thumb'
-  - unless user_signed_in?
-    #login-popup.popup-form
-      .arrow
-      = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
-        %fieldset
-          = f.label :email
-          = f.email_field :email
-          = f.label :password
-          = f.password_field :password
-          = f.submit "Login", class: 'pure-button pure-button-primary'
-    #register-popup.popup-form
-      .arrow
-      = render partial: 'devise/registrations/new'
-  .inner-1
-    .inner-2
-      .inner-3
-        %h1 dexterous
-        %h2
-          Time and Resource planner
-          %br
-          for
-          %br
-          motivated self-learners
-      %a#push-down-thumb
-        .icon
+    #login-links
+        - if user_signed_in?
+            = link_to 'Dashboard', action: :dashboard, id: 'dashboard-thumb'
+            = link_to 'Logout', destroy_user_session_path, id: 'logout-thumb'
+        - else
+            = link_to 'Login', new_user_session_path, id: 'login-thumb'
+            = link_to 'Register', new_user_registration_path, id: 'register-thumb'
+    - unless user_signed_in?
+        #login-popup.popup-form
+            .arrow
+            = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
+                %fieldset
+                    = f.label :email
+                    = f.email_field :email
+                    = f.label :password
+                    = f.password_field :password
+                    = f.submit "Login", class: 'pure-button pure-button-primary'
+        #register-popup.popup-form
+            .arrow
+            = render partial: 'devise/registrations/new'
+    .inner-1
+        .inner-2
+            .inner-3
+                %h1 dexterous
+                %h2
+                    Time and Resource planner
+                    %br
+                    for
+                    %br
+                    motivated self-learners
+            %a#push-down-thumb
+                .icon
 
 %section#descr-promo
-  .row
-    Schedule your time,
-  .row
-    Organize resources
-  .row
-    Invite Collaborators
-  .row
-    Get stuff done.
+    .row
+        Schedule your time,
+    .row
+        Organize resources
+    .row
+        Invite Collaborators
+    .row
+        Get stuff done.
