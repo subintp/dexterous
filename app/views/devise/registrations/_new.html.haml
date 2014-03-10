@@ -21,6 +21,7 @@
                     = f.label :password_confirmation
                 %td
                     = f.password_field :password_confirmation
-    .recaptcha-container
+    .recaptcha-container.tcenter
         = recaptcha_tags
-    = f.submit "Register", class: 'pure-button pure-button-primary'
+    .tcenter
+        = f.submit "Register", class: 'pure-button pure-button-primary'

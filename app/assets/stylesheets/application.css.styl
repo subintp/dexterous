@@ -7,16 +7,54 @@
  *= require_self
  */
 
+@import 'mixins/colors'
+
 body
     font-family: 'Raleway', sans-serif
     font-size 100%
-    background #D9D9D9
+    background col-bkg-prim
+    border-top 2px solid col-yellow-prim
 a
     cursor pointer
-
+input[type='text'], input[type='password'], input[type='email'], textarea
+    outline none !important
+    &:focus
+        border 1px solid col-yellow-prim !important
 .rfloat
     float right
 .lfloat
     float left
+.tcenter
+    text-align center
 .hidden
     display none
+.no-mp
+    margin-left auto
+    margin-right auto
+
+.notice, .alert
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 2em;
+    background: white; 
+.alert
+    color red
+.page-container
+    margin 20px auto
+    width 80%
+.page-header
+    border-bottom 1px solid #e3e3e2
+    text-align center
+.page-body
+    border-top 1px solid white
+.page-container.form-container
+    table, form input
+        margin 5px auto
+    form
+        fieldset, label
+            text-align center
+#recaptcha_area
+    for dir in left right
+        margin-{dir} auto
+
+props = {}

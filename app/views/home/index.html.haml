@@ -12,13 +12,7 @@
     - unless user_signed_in?
         #login-popup.popup-form
             .arrow
-            = form_for resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'} do |f|
-                %fieldset
-                    = f.label :email
-                    = f.email_field :email
-                    = f.label :password
-                    = f.password_field :password
-                    = f.submit "Login", class: 'pure-button pure-button-primary'
+            = render partial: 'devise/sessions/new'
         #register-popup.popup-form
             .arrow
             = render partial: 'devise/registrations/new'
